@@ -1,3 +1,7 @@
 \subsection{Approach}
 
-The idea is to develop an application that can give feedback on a powerlifting technique, informing the user whether or not it was completed to competition standard, and giving feedback on whether the lift was executed as safely as possible. It should be portable and unintrusive, as an amateur lifter should be able to bring it to the gym and perform their lifts with no more equipment than they would usually use.
+The idea is to develop an application that can give feedback on a powerlifting technique, informing the user whether or not it was completed to competition standard, and giving feedback on whether the lift was executed as safely as possible. It should be portable and unintrusive, as an amateur lifter should be able to bring it to the gym and perform their lifts with no more equipment than they would usually use. A coach or training partner can often give helpful real-time feedback on lifts. An example of this might be notifying the lifter when they have reached sufficient depth in a squat.
+
+In order to ensure that the application is portable, I propose an Android application to run on a smartphone. To avoid an intrusive experience, we must not rely on markers on the lifter - they should be able to either have a training partner hold the device, or rest their Android device in a suitable location while they lift.
+
+The overall approach will be to use computer vision techniques to separate the lifter from their surroundings, map a basic skeletal model to the lifter's silhouette, and to analyse the movement of the skeletal model to gauge information about the validity and safety of the lift. Processing must be done in real-time to ensure that feedback can be given during the lift.
