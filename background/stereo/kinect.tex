@@ -1,2 +1,3 @@
 \subsubsection{Kinect}
 
+Jamie Shotton et al developed an algorithm\cite{shottonkinect} for human pose detection (that is the 3D positions of body joints) which uses a Randomised Decision Forrest trained on an extremely large data set of a wide variety of poses. This machine learning approach is used in the Kinect tracking system, and has the advantage of being both robust and computationally inexpensive to classify a new image. This is due to the algorithm reducing the detection into a per-pixel classification problem. Another advantage of this method is that it does not rely on temporal information (or previous frames) as pose estimation can be performed on a standalone frame.
