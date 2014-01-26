@@ -1,0 +1,7 @@
+\subsubsection{Background Subtraction}
+
+The background subtraction in general is to compute the per pixel differences between a given frame and a known background frame. Differences above a certain threshold are considered foreground, and differences below this threshold are considered background.
+
+The background image is often obtained from either a frame from the video sequence known to be background, or by taking the average pixel values over a selection (or all) frames in a video sequence.
+
+More advanced implementations of background subtraction will use mixtures of gaussians to represent colours in the frame, with each gaussian weighted by the time that colour remains in the scene\cite{backgroundsubmog}. Colours considered to be background are those that stay in the scene longer, with less motion. Implementations such as this are used in OpenCV\cite{opencv}.

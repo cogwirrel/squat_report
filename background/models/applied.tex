@@ -1,0 +1,7 @@
+\subsubsection{Applied to this Project}
+
+This project will be using a monocular camera. This does not necessarily mean that the mapping of a three dimensional model to a two dimensional frame is not impossible, but is more computationally challenging. In the case of powerlifting, we can extract all required data to determine the validity of a lift from a two dimensional model of the side view of a squat and deadlift. The only information that we would miss with a two dimensional model is one related to the safety of the lifts: the position of the knees from a front view, to make sure that they do not buckle in towards each other in both the squat and deadlift.
+
+The camera will be in a known location relative to the human subject and the movements are well defined, which makes a two dimensional model feasible. As it will provide us with enough data to determine the validity and to measure the majority of safety criteria of the lift, I have opted to use a two dimensional model for this project.
+
+This two dimensional model will likely be based on the cardboard model, using two dimensional shapes that best fit the human subject. Their positions should not individually be defined by their position, rotation, yaw etc, but should be defined by the relative rotations at joints. This will reduce the degrees of freedom of the model, allowing for faster optimisation. It will also more accurately represent a human and the human limits of joint movement can be used to constrain the optimisation problem.
