@@ -1,6 +1,7 @@
 \subsection{Foreground Segmentation}
 
-We must separate the lifter from their surroundings in order to provide a silhouette to map our human model to.
+We must separate the lifter from their surroundings in order to provide a silhouette to map our human model to. This is fairly trivial using a stereo or depth camera using the $z$ coordinates of pixels, but is more challenging in the monocular case.
 
-\input{background/foregroundsegmentation/backgroundsubtraction.tex}
-%\input{background/foregroundsegmentation/}
+\input{background/foregroundsegmentation/bgsub.tex}
+\input{background/foregroundsegmentation/bgsubmoving.tex}
+\input{background/foregroundsegmentation/applied.tex}
