@@ -1,1 +1,52 @@
 \section{Evaluation Plan}
+
+\subsection{Goals}
+
+My goals for this project are to have an easy to use application that will give real time feedback on the execution of a squat and deadlift. The application should be non-intrusive, requiring no special equipment. It should be reasonably accurate, able to notify the lifter when they have executed a lift correctly or not.
+
+\subsubsection{Squat Feedback}
+
+The following feedback should be given to inform the user whether or not their squat was valid:
+
+\begin{itemize}
+	\item \textbf{Depth} Whether or not the hip joint goes below the knee at the bottom of the squat
+	\item \textbf{Lockout} Whether or not the lifter fully locked out their knees and hips to finish in an upright position
+	\item \textbf{Reverse Movement} Whether or not the lifter moved downwards in the ascent part of the squat
+\end{itemize}
+
+The following feedback should be given to inform the user whether or not their squat was safe:
+
+\begin{itemize}
+	\item \textbf{Upright Shins} Whether the shins remain near-vertical throughout the lift (to avoid knee injury)
+	\item \textbf{Back Flexion} Whether the spine remained neutral during the lift (to avoid back injury)
+	\item \textbf{Back Angle} Whether the back remains within an optimal range of angles during the lift
+\end{itemize}
+
+\subsubsection{Deadlift Feedback}
+
+The following feedback should be given to inform the user whether or not their deadlift was valid:
+
+\begin{itemize}
+	\item \textbf{Lockout} Whether or not the lifter fully locked out their knees and hips to finish in an upright position
+	\item \textbf{Reverse Movement} Whether or not the lifter moved downwards in the ascent part of the deadlift
+\end{itemize}
+
+The following feedback should be given to inform the user whether or not their deadlift was safe:
+
+\begin{itemize}
+	\item \textbf{Back Flexion} Whether the spine remained neutral during the lift (to avoid back injury)
+\end{itemize}
+
+\subsection{Testing}
+
+To test the core functionality of the app, I will provide a sample of gym-goers with a copy, and ask them to review it according to the following criteria:
+
+\begin{itemize}
+	\item Ease of Use
+	\item Accuracy
+	\item Effectiveness (ie. how much it helped their training)
+\end{itemize}
+
+To evaluate whether the application runs in real time, I will benchmark test the frames per second of the application. A value above 10fps will be considered a suitable frame rate.
+
+I will also test its accuracy by running the application against good and bad squats, and recording the number of true positives, false positives, true negatives and false negatives. These results will be used to give statistics on the success of the project.
