@@ -1,15 +1,19 @@
 \subsection{Detection}
 
-Detection is the first component of the algorithm - allowing the lifter to be located in the scene automatically, and the model to be scaled and fit to the lifter.
+Detection is the first component of the algorithm - allowing the lifter to be located in the scene automatically, and the model to be scaled and fit to the lifter. Detection can be broken down into four main stages.
 
+\subsubsection{Ensure Camera and Surroundings are Stationary}
 Detection starts after ensuring that the camera is still and there is little movement in the background. This is done using OpenCV's \verb!BackgroundSubtractorMOG!. This background subtractor is based on the work of P. KaewTraKulPong et al\cite{backgroundsubmog}. It can be provided with a learning rate and history as parameters, which determine how fast new pixels in the foreground become part of the background model. During this initial stage, a low history and high learning rate is used, meaning that when the frame contains no motion, the entire scene becomes background. The percentage of the frame that is deemed foreground is calculated, and we test that this percentage is low enough to be confident that there is minimal background movement and that the camera is stationary.
 
+\subsubsection{Detect a Lifter is Present and Stationary}
 Once the camera is deemed stationary, and the background clear of movement, we allow the user to initiate the detection process by pressing a button. At this point, a snapshot from the camera is taken to be used as the background model in a custom background subtractor (outlined in section~\ref{sec:tracking}). This background subtractor is used to find the lifter as they walk into view, by checking the percentage of the frame that is foreground is sufficiently large to be a human figure standing in view. 
 
 While a figure is detected present in the view, the frames are checked for movement. This motion detection is performed by subtracting a binary frame (each pixel has a value of 1 for foreground, and 0 for background) from the previous binary frame, and calculating the percentage difference between the two. If the percentage is below a certain threshold, it means that there was little motion between the frames. After a series of frames are detected to have little motion between them, it is deemed that the lifter has stood still, and is ready to squat.
 
+\subsubsection{Scale the Model}
 Now that the lifter is standing still in the centre of the view, we can begin the model initialisation. First, the model is scaled to the size of the lifter. This is accomplished by measuring the height in pixels of the largest `blob' in the foreground, ie. the lifter, and measuring the height of the model, setting the model's scaling factor to shrink or expand it to the correct height.
 
+\subsubsection{Initial Model Fitting}
 Once the model has been scaled to the correct size, we begin the initial fitting stage. This fitting stage uses the same optimisation algorithm and cost function as detailed in section~\ref{sec:tracking}. The parameters that are optimised over are different to the tracking phase however - the $x$ and $y$ coordinates of the model's toe. The model is assumed to be in the upright position, and the angles are fixed, to allow the optimisation to move the model to where it overlays the upright lifter.
 
 Once the initial fitting is complete, the coordinates of the toe are fixed. At this point the detection stage is complete, and the user is notified.
