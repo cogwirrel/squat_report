@@ -1,9 +1,17 @@
 \subsection{Approach}
 
-The idea is to develop an application that can give feedback on a powerlifting technique, informing the user whether or not it was completed to competition standard, and giving feedback on whether the lift was executed as safely as possible. It should be portable and unintrusive, as an amateur lifter should be able to bring it to the gym and perform their lifts with no more equipment than they would usually use. A coach or training partner can often give helpful real-time feedback on lifts. An example of this might be notifying the lifter when they have reached sufficient depth in a squat.
+The idea is to develop an application that can give feedback on a powerlifting technique, informing the user whether or not it was completed correctly and safely, giving feedback on how the lift might be improved. It should be portable and unobtrusive, as an amateur lifter should be able to bring it to the gym and perform their lifts with no more equipment than they would usually use. Real-time feedback on lifts would be particularly useful, to allow the lifter to adjust their form on the fly. An example of this might be notifying the lifter when they have reached sufficient depth in a squat.
 
-In order to ensure that the application is portable, I propose an application to run on a mobile device. To avoid an intrusive experience, we must not rely on markers on the lifter - they should be able to rest their device in a suitable location while they lift.
+In order to ensure that the application is portable, I propose an application to run on a mobile device. To avoid an intrusive experience, we must not rely on markers on the lifter - they should be able to rest their device in a suitable location while they lift, with no extra equipment about their person.
 
-The overall approach will be to use computer vision techniques to separate the lifter from their surroundings, map a basic human model to the lifter's silhouette, and to analyse the movement of the model to gauge information about the validity and safety of the lift. Processing must be done in real-time to ensure that feedback can be given during the lift.
+The squat is often thought to be the most important of the three powerlifting techniques in a training environment. Mark Rippetoe, a well known strength coach, describes the importance of the squat in training.
 
-Given that a squat and deadlift are reasonably similar in terms of their appearance, I will focus on creating an application that will track these two movements. The bench press may be introduced as an extension.
+\begin{quote}
+\emph{There is simply no other exercise, and certainly no machine, that provides the level of central nervous activity, improved balance and coordination, skeletal loading and bone density enhancement, muscular stimulation and growth, connective tissue stress and strength, psychological demand and toughness, and overall systemic conditioning than the correctly performed full squat.}
+
+Mark Rippetoe
+\end{quote}
+
+For this reason, it has been decided to focus on the squat for this project. I aim to create a fully functioning application on a mobile device to track and analyse squats in real-time.
+
+The overall approach will be to use computer vision techniques to separate the lifter from their surroundings, map a basic human model to the lifter's silhouette, and to analyse the movement of the model to gauge information about the validity and safety of the lift.
