@@ -67,6 +67,8 @@ Main Report Body
 			Detect when feet out of position (walk away to finish)
 	Implementation
 		Linux, then port to android
+		Cool code stuff eg. listeners
+		Optimisation - matmanager!
 		Libraries - OpenCV, apache commons
 	Application Overview/Features
 		UI
