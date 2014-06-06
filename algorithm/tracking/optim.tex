@@ -1,0 +1,16 @@
+\subsubsection{Optimisation and Fitting}
+
+The optimiser finds the model parameters that best fit the current video frame. It does this using an optimisation algorithm and a cost function.
+
+The optimisation algorithm used is BOBYQA, which stands for Bound Optimisation BY Quadratic Approximation. This is an iterative algorithm for finding the minimum value of a function, given a set of bounded variables. The algorithm was developed by M. Powell, and is detailed in his paper\cite{bobyqa}.
+
+The main advantages over other multivariate optimisation algorithms are firstly that it does not require derivatives of the cost function, and secondly that it constrains the search space using bounds. With no requirement for derivatives, the cost function can be treated as a `black box', allowing for far more freedom in the design of the cost function. In the case of this project, the cost function will need to perform operations on the model and video frames, and so is not a straightforward function of the input variables. The bounds reduce the search space which speeds up the time taken to find the parameters that best fit the model to the frame. With the right bounds, the chance of the model fitting to the frame in a position that is humanly impossible is reduced.
+
+The application uses a Java implementation of BOBYQA, which is available in the Apache Commons Math library\cite{apachemath}.
+
+BOBYQA attempts to minimise a cost function by adjusting its parameters within a given set of bounds. During the development of the tracking algorithm, a few different cost functions were evaluated before settling on the final implementation.
+
+The first cost function attempt was one that returns the sum of squared distance from each joint in the model to the silhouette of the figure in the frame. The idea behind this was that by minimising these distances, the model's `skeleton' would always remain within the figure's silhouette. This function performed quite poorly, with the model roughly gravitating towards the silhouette, but never fitting properly.
+
+The second cost function attempt was one that calculates the number of overlapping pixels when drawing the model directly on top of the silhouette.
+% MORE!! Tried to improve by also minimising the number of pixels that don't overlap, but didn't work due to weighting blah blah
