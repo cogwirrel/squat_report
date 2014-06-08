@@ -1,0 +1,11 @@
+\subsection{Optimisation}
+
+In order to track and analyse squats in real-time, the code needed to be optimised. This was particularly important after the port to Android, where the limited hardware of a mobile device made inefficiencies more apparent.
+
+OpenCV provide a short set of guidelines for best practices in using their libraries on Android\cite{opencvoptim}. The main practices encouraged are to avoid repetitive Java Native Interface (JNI) calls into C++ code, and to avoid excessive memory allocations by initialising matrices towards the start of the application, reusing them rather than reallocating them upon every use.
+
+Matrices in OpenCV are defined as \verb!Mat! objects. In order to follow the best practices for allocating and using \verb!Mat! objects, a \verb!MatManager! class was created. The \verb!MatManager! is a static class though which the codebase retrieves matrices. It has a single function, \verb!get()! which returns a reference to a \verb!Mat!. This \verb!get()! function takes a string key as a parameter, and keeps track of a map of these keys to \verb!Mat! objects. When requested for a matrix with a key that does not exist in the map, the matrix is created, and when the key does exist, the matrix that has previously been created is returned.
+
+The \verb!MatManager! made it very simple to modify the code to reuse matrices. Wherever the codebase had previously created a \verb!Mat!, the construction was replaced with \verb!MatManager.get()! and an appropriate key.
+
+The use of \verb!MatManager! dramatically increased the speed of the application on Android, allowing tracking and analysis to occur in real-time. It avoids the allocation of more memory than the application needs, and the overhead of garbage collection to clear the memory space of dereferenced matrices. Each allocation of a matrix also requires a JNI call, and so these were also minimised.

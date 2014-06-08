@@ -1,6 +1,8 @@
 \subsection{Events and Listeners}
 \label{sec:listeners}
 
+\subsubsection{Analysis and Scoring}
+
 Events and listeners are utilised throughout the codebase, but their most interesting use is in the analysis stage.
 
 Upon each iteration of the tracking algorithm, the model's joint positions and angles are examined. This per-frame examination is performed by the \verb!ModelEventManager!. Other classes may register listener functions with the \verb!ModelEventManager!, detailing which event it wishes to subscribe to. When a new observation is made on the model (for example we have newly observed that the lifter has gone `below parallel'), an event is triggered, calling every registered listener for that particular event.
@@ -43,4 +45,8 @@ public class SimpleRepCounter {
 
 The more advanced components used in the analysis and scoring of each repetition use sets of listeners in a similar manner.
 
-The \verb!ModelEventManager! provides a simple way to add new tracking functionality, whether at the low or high level.
+The \verb!ModelEventManager! provides a simple way to add new analysis functionality, whether at the low or high level.
+
+\subsubsection{Other Listeners}
+
+The remainder of the codebase uses listeners in order to update the user interface or provide the user with real time feedback. This pattern was used to ensure that the core algorithm was separated from the user interface. The user interface registers itself as a listener to the \verb!SquatPipeline!, which calls different listener functions at different stages of the algorithm. Example uses include updating the notification text in the user interface or emitting a beep whenever the lifter squats low enough.
