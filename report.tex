@@ -2,6 +2,18 @@
 \input{misc/packages}
 \input{misc/settings}
 
+\lstset{tabsize=2}
+\lstdefinestyle{javastyle}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  language=Java,
+  showstringspaces=false,
+  basicstyle=\ttfamily,
+  keywordstyle=\bfseries\color{blue},
+  commentstyle=\itshape\color{green!40!black},
+  identifierstyle=\color{blue!40!black},
+  stringstyle=\color{red},
+}
 
 \begin{document}
 \maketitle
@@ -14,6 +26,7 @@
 \input{intro/intro.tex}
 \input{background/background.tex}
 \input{algorithm/algorithm.tex}
+\input{implementation/implementation.tex}
 
 \input{evaluationplan/evaluationplan.tex}
 

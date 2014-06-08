@@ -27,3 +27,5 @@ The third attempt was to minimise pixels of the model that did not overlap the s
 \centerline{$cost = countNonZero(m \& ~f)$}
 
 The second cost function seemed to provide the best fit, and it is likely that this is due to the larger cost value returned by the second function being less likely to change dramatically for small changes in the model angles. For this reason the second cost function was chosen for the algorithm.
+
+At this stage in the algorithm we have obtained a foreground frame and a model, and through the optimisation the model has been fit to the foreground. Therefore on each frame the model is in the same position as the figure performing the squat. This does assume that the fit was perfect, which in practice is not the case, but the fit is generally good enough to assume that the model is in a position reasonably similar to that of the figure.
