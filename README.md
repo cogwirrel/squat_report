@@ -82,12 +82,16 @@ Evaluation
 	Technical benchmarks?
 	Useability, practicality and general performance
 
-Conclusion and Future Work
+Future Work
 	Recording for later viewing
 	More lifts - deads, bench, clean & jerk, snatch
 	Application in other areas - sports eg. cycling/gymnastics, interactive ui/game
 	Stereo camera phone
+	Plan to release on app store + popularity on reddit etc.
 
-References/Bibliography
+Conclusion
+	It's awesome
+
+References
 
 Appendix
