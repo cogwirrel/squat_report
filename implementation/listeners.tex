@@ -5,17 +5,17 @@
 
 Events and listeners are utilised throughout the codebase, but their most interesting use is in the analysis stage.
 
-Upon each iteration of the tracking algorithm, the model's joint positions and angles are examined. This per-frame examination is performed by the \verb!ModelEventManager!. Other classes may register listener functions with the \verb!ModelEventManager!, detailing which event it wishes to subscribe to. When a new observation is made on the model (for example we have newly observed that the lifter has gone `below parallel'), an event is triggered, calling every registered listener for that particular event.
+Upon each iteration of the tracking algorithm, the model's joint positions and angles are examined. This per-frame examination is performed by the \texttt{ModelEventManager}. Other classes may register listener functions with the \texttt{ModelEventManager}, detailing which event it wishes to subscribe to. When a new observation is made on the model (for example we have newly observed that the lifter has gone `below parallel'), an event is triggered, calling every registered listener for that particular event.
 
-The \verb!ModelEventManager! tracks the state of the model at a low level, providing a high level view to other classes so that they can be notified when the lifter is in a particular position.
+The \texttt{ModelEventManager} tracks the state of the model at a low level, providing a high level view to other classes so that they can be notified when the lifter is in a particular position.
 
 There are many events that can be subscribed to, and some of the most interesting ones are listed below:
 
 \begin{itemize}
-	\item \verb!SQUAT_DESCEND_START! Triggered as soon as the lifter is detected to be descending.
-	\item \verb!SQUAT_ASCEND_START! Triggered as soon as the lifter is detected to be ascending.
-	\item \verb!SQUAT_BELOW_PARALLEL_START! Triggered as soon as the lifter goes low enough.
-	\item \verb!SQUAT_BELOW_PARALLEL_END! Triggered as soon as the lifter travels upwards out of the below parallel state.
+	\item \texttt{SQUAT\_DESCEND\_START} Triggered as soon as the lifter is detected to be descending.
+	\item \texttt{SQUAT\_ASCEND\_START} Triggered as soon as the lifter is detected to be ascending.
+	\item \texttt{SQUAT\_BELOW\_PARALLEL\_START} Triggered as soon as the lifter goes low enough.
+	\item \texttt{SQUAT\_BELOW\_PARALLEL\_END} Triggered as soon as the lifter travels upwards out of the below parallel state.
 \end{itemize}
 
 There are many other events that are triggered when the lifter first enters and exits a position of bad form.
@@ -45,8 +45,8 @@ public class SimpleRepCounter {
 
 The more advanced components used in the analysis and scoring of each repetition use sets of listeners in a similar manner.
 
-The \verb!ModelEventManager! provides a simple way to add new analysis functionality, whether at the low or high level.
+The \texttt{ModelEventManager} provides a simple way to add new analysis functionality, whether at the low or high level.
 
 \subsubsection{Other Listeners}
 
-The remainder of the codebase uses listeners in order to update the user interface or provide the user with real-time feedback. This pattern was used to ensure that the core algorithm was separated from the user interface. The user interface registers itself as a listener to the \verb!SquatPipeline!, which calls different listener functions at different stages of the algorithm. Example uses include updating the notification text in the user interface or emitting a beep whenever the lifter squats low enough.
+The remainder of the codebase uses listeners in order to update the user interface or provide the user with real-time feedback. This pattern was used to ensure that the core algorithm was separated from the user interface. The user interface registers itself as a listener to the \texttt{SquatPipeline}, which calls different listener functions at different stages of the algorithm. Example uses include updating the notification text in the user interface or emitting a beep whenever the lifter squats low enough.
