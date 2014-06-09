@@ -2,15 +2,22 @@
 
 The steps that a user of the application will follow are detailed in this section.
 
-The user begins by starting up the application. They will immediately see a video feed of the front-facing camera of their Android mobile device. They will see a message at the very top of the screen, instructing them on the first step they must take: ``Ensure surroundings are still''.
-
-A button at the bottom of the screen displays the text ``Wait...'', indicating that some action must be performed before the button can be pressed. Figure~\ref{fig:ensuresurroundings} shows this screen.
-
 \begin{figure}[H]
     \centering
 	\includegraphics[height=10cm]{application/images/ensuresurroundingsstill}
 \caption{Wait until the device and its surroundings are still}
 \label{fig:ensuresurroundings}
+\end{figure}
+
+The user begins by starting up the application. They will immediately see a video feed of the front-facing camera of their Android mobile device. They will see a message at the very top of the screen, instructing them in the first step they must take: ``Ensure surroundings are still''.
+
+A button at the bottom of the screen displays the text ``Wait...'', indicating that some action must be performed before the button can be pressed. Figure~\ref{fig:ensuresurroundings} shows this screen.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[height=10cm]{application/images/pressstart}
+\caption{The background is deemed still, allow the user to press start}
+\label{fig:pressstart}
 \end{figure}
 
 As the user follows the on-screen instruction of ensuring that their surroundings are still, they will notice that the instruction text changes to ``Press Start'' automatically, and the button displays ``Start'' and is lightened to indicate that it may be pressed. This screen is shown in figure~\ref{fig:pressstart}.
@@ -21,9 +28,9 @@ The application tolerates a little movement, meaning that movement too far away 
 
 \begin{figure}[H]
     \centering
-	\includegraphics[height=10cm]{application/images/pressstart}
-\caption{The background is deemed still, allow the user to press start}
-\label{fig:pressstart}
+	\includegraphics[height=10cm]{application/images/foundfigure}
+\caption{A figure has been detected}
+\label{fig:foundfigure}
 \end{figure}
 
 As a side note, there is also a button to the right of the start button. This button is used to flip the expected orientation of the lifter. It defaults to expect the lifter to face left (as they look at the screen). When this button is pressed, the figure in the icon flips to indicate that the lifter must stand facing the opposite direction. Vocal feedback is also used, with a voice saying ``Face left.'' or ``Face right.'' to confirm this change of orientation.
@@ -34,21 +41,12 @@ The user will follow these instructions, collecting their barbell from the squat
 
 \begin{figure}[H]
     \centering
-	\includegraphics[height=10cm]{application/images/foundfigure}
-\caption{A figure has been detected}
-\label{fig:foundfigure}
-\end{figure}
-
-Once the user has moved into position, and stood still following the instructions, the application will emit a beep as it fits the initial model to the user. As it does this, the video feed will add an overlay showing the model drawn as a skeleton - with lines connecting points in a stick figure fashion. Although this is not the model drawing method used in fitting, it is more intuitive for the user to see a skeleton view than the model constructed of ovals. This encapsulates the underlying functionality, displaying the model in a user-friendly way. From this, the user can see that they have been recognised by the application, and that the application has started to track their movement. Figure~\ref{fig:startsquatting} shows this stage.
-
-\begin{figure}[H]
-    \centering
 	\includegraphics[height=10cm]{application/images/startsquatting}
 \caption{The model is mapped to the figure once the figure is still}
 \label{fig:startsquatting}
 \end{figure}
 
-As the model is displayed and the application beeps, the application's voice will indicate the next move expected from the user by saying ``Start squatting when ready.''. The user may now begin squatting in their own time. As they squat, the skeleton on screen will be updated in real-time as the tracking part of the algorithm runs, as shown in figure~\ref{fig:midsquat}.
+Once the user has moved into position, and stood still following the instructions, the application will emit a beep as it fits the initial model to the user. As it does this, the video feed will add an overlay showing the model drawn as a skeleton - with lines connecting points in a stick figure fashion. Although this is not the model drawing method used in fitting, it is more intuitive for the user to see a skeleton view than the model constructed of ovals. This encapsulates the underlying functionality, displaying the model in a user-friendly way. From this, the user can see that they have been recognised by the application, and that the application has started to track their movement. Figure~\ref{fig:startsquatting} shows this stage.
 
 \begin{figure}[H]
     \centering
@@ -57,7 +55,7 @@ As the model is displayed and the application beeps, the application's voice wil
 \label{fig:midsquat}
 \end{figure}
 
-As the user descends low enough for the squat to be considered valid, the application emits another beep. This real-time feedback is incredibly useful, meaning that the user will know when they have squatted low enough during the movement, rather than only discovering this after they have finished their set. When hearing a beep, the user knows immediately that they must start the ascension part of the movement and can begin to drive with their legs. On-screen, the skeleton changes colour to green (as shown in figure~\ref{fig:belowparallel}), reinforcing the notion that their squat is low enough to be considered valid.
+As the model is displayed and the application beeps, the application's voice will indicate the next move expected from the user by saying ``Start squatting when ready.''. The user may now begin squatting in their own time. As they squat, the skeleton on screen will be updated in real-time as the tracking part of the algorithm runs, as shown in figure~\ref{fig:midsquat}.
 
 \begin{figure}[H]
     \centering
@@ -66,13 +64,22 @@ As the user descends low enough for the squat to be considered valid, the applic
 \label{fig:belowparallel}
 \end{figure}
 
-Another element of visual feedback is a line which shows the weight distribution of the squat. For a squat to be optimal, the bar must be directly above the feet at all times, giving the user maximum leverage to support the weight. Should the application detect that this is not the case, and the weight is too far in front of the lifter's toes, or too far behind the lifter's heels, a red vertical line is drawn from the bar to the feet, as shown in figure~\ref{fig:weightdistro}. This traces the weight's position above the feet, showing that it is too far forward or backward.
+As the user descends low enough for the squat to be considered valid, the application emits another beep. This real-time feedback is incredibly useful, meaning that the user will know when they have squatted low enough during the movement, rather than only discovering this after they have finished their set. When hearing a beep, the user knows immediately that they must start the ascension part of the movement and can begin to drive with their legs. On-screen, the skeleton changes colour to green (as shown in figure~\ref{fig:belowparallel}), reinforcing the notion that their squat is low enough to be considered valid.
 
 \begin{figure}[H]
     \centering
 	\includegraphics[height=10cm]{application/images/weightdistro}
 \caption{A red line indicates sub-optimal weight distribution}
 \label{fig:weightdistro}
+\end{figure}
+
+Another element of visual feedback is a line which shows the weight distribution of the squat. For a squat to be optimal, the bar must be directly above the feet at all times, giving the user maximum leverage to support the weight. Should the application detect that this is not the case, and the weight is too far in front of the lifter's toes, or too far behind the lifter's heels, a red vertical line is drawn from the bar to the feet, as shown in figure~\ref{fig:weightdistro}. This traces the weight's position above the feet, showing that it is too far forward or backward.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[height=10cm]{application/images/lockout}
+\caption{The skeleton is drawn in green and vocal feedback is given as the lifter locks out}
+\label{fig:lockout}
 \end{figure}
 
 As the user completes the ascension part of the squat (thus completing one full repetition) and `locks out', the skeleton is again coloured green as shown in figure~\ref{fig:lockout}. At this point, the application detects that a repetition has been completed, and provides the user with vocal feedback. This vocal feedback includes the current rep number, how successful the squat was, and a tip on how to improve the squat if necessary. An example might be ``Two. Good. Try leaning forward a little more.'', or ``Four. Ok. Try squatting deeper.''.
@@ -83,21 +90,16 @@ The part of the feedback which tells the user how well their squat was performed
 
 \begin{figure}[H]
     \centering
-	\includegraphics[height=10cm]{application/images/lockout}
-\caption{The skeleton is drawn in green and vocal feedback is given as the lifter locks out}
-\label{fig:lockout}
+	\includegraphics[height=10cm]{application/images/scores}
+\caption{The lifter's scores are displayed once they have finished squatting}
+\label{fig:scores}
 \end{figure}
 
 This process repeats for every repetition completed by the user. Feedback is given as the figure is detected to stand up straight or, should they fail to fully lock out, as they begin descending into their next repetition.
 
 When the user has completed their desired number of squats, they simply walk out of view. This follows the usual procedure, where a lifter will place the weight back in the rack on the completion of their set of squats. As they walk away, the tracking and analysis phase will end, and a breakdown of their scores is displayed on the screen as shown in figure~\ref{fig:scores}.
 
-\begin{figure}[H]
-    \centering
-	\includegraphics[height=10cm]{application/images/scores}
-\caption{The lifter's scores are displayed once they have finished squatting}
-\label{fig:scores}
-\end{figure}
+
 
 Here, the user can see their score for each repetition they completed, and also the main `problem' with their squat. Each entry in the table is coloured in relation to its score, giving the user an instant visual indication as to how well their squat was performed, without the need to read each score value. A set of scores that is mostly green will indicate to the user that they performed a good set of squats, and a largely orange or red set of scores will inform the user that they should improve their technique.
 
