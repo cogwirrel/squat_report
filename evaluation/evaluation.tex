@@ -70,7 +70,11 @@ Any movement in the background or foreground that crosses the lifter will effect
 
 As the passer by walks into view, he is detected as foreground, and as soon as he crosses the lifter, becomes part of the largest object, pulling the model towards him. The model follows the passer by until he leaves the view, but after this the model is reasonably quick to snap back into place and continue tracking the lifter as usual.
 
-In poor lighting conditions, the background subtraction is prone to failure. When the lighting changes, the colour of pixels in the background will change and (as soon as the difference is greater than the threshold) will be detected as foreground. This then breaks down the tracking- wherever the model resides it achieves maximum overlap with the foreground.
+In unstable lighting conditions, the background subtraction algorithm is prone to failure. When the lighting changes, the colour of pixels in the background will change and (as soon as the difference is greater than the threshold) will be detected as foreground. This then breaks down the tracking- wherever the model resides it achieves maximum overlap with the foreground, and so ceases to move. Perhaps the background subtraction algorithm could be improved to update it's known background over time, allowing for variations in lighting.
+
+From the screenshots above, it can be seen that the application tracks reasonably well on the whole. The joint locations of the model do not always perfectly match the lifter, but the model follows the lifter with reasonable precision. The proportions of the model are fixed in the current implementation, which is likely the cause of the intermittent joint misalignment.
+
+The combination of background subtraction, model and optimisation tracks the lifter well overall, and is robust to a reasonable level of movement in the surrounding area.
 
 \subsubsection{Analysis}
 

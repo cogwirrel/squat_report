@@ -1,20 +1,38 @@
 \subsubsection{The Model}
 \label{subsec:model}
 
-The model used in this application is made up of a series of ellipses to create a two dimensional side-view figure. The model is defined by the following parameters:
+The model used in this application is made up of a series of ellipses to create a two dimensional side-view figure. Figure~\ref{fig:modelellipses} shows a sketch of this figure:
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[height=10cm]{algorithm/images/model}
+\caption{A sketch of the elliptical model}
+\label{fig:modelellipses}
+\end{figure}
+
+The model is defined by the following parameters:
 
 \begin{itemize}
 	\item \textbf{Scale} A single scale factor to define the size of the model
 	\item \textbf{Toe Coordinates} The location of the toes in the frame
 	\item \textbf{Angles} Several angles to define the model's pose:
-		\begin{itemize}
+		\begin{enumerate}
 			\item Shoulder
 			\item Hip
 			\item Knee
 			\item Ankle
 			\item Toe
-		\end{itemize}
+		\end{enumerate}
 \end{itemize}
+
+The angles are each defined from the horizontal plane, and are located at each of the models joints, where the ellipses interlock. These angles are shown in figure~\ref{fig:modelangles}
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[height=10cm]{algorithm/images/model_angles}
+\caption{The 5 angles defining the model's pose}
+\label{fig:modelellipses}
+\end{figure}
 
 During the tracking phase, the toe coordinates and scale are fixed, and the fitting is performed over the 5 angles in the model. This means that the model has relatively view parameters, which reduces the degrees of freedom and therefore the search-space of the optimisation.
 
