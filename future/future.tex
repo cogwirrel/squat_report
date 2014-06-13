@@ -16,6 +16,14 @@ An option to avoid this requirement in the detection phase might be to switch of
 
 Another option might be to use the Android API to access the accelerometer of the mobile device, checking its readings to detect when the device is set up correctly.
 
+\subsubsection{Squat Rack}
+
+Many lifters will perform their squats within the squat rack, which provides bars to catch the weight should they fail to execute the lift. These bars obstruct the view of the lifter, and therefore the current tracking algorithm cannot follow a lifter inside the rack.
+
+This is not a major problem, as many lifters will be happy to perform their lifts away from the rack, especially during training when lifting weights that the lifter knows they will not fail with. When a lifter attempts a new personal record, or a weight they are unsure that they are able to lift, they will use the squat rack. In this case they would not be able to use the application.
+
+A future enhancement to the application would be to adjust the algorithm to allow for stationary objects in front of the lifter. One option which might allow for this may be to ``join'' objects detected as foreground that are reasonably close to one another, so as to create a full figure from the parts of the figure that can be seen.
+
 \subsubsection{Resolution}
 
 At present the resolution of the application is fairly low. Higher resolutions were tested, but the increased number of pixels reduced the reliability of background subtraction, often causing the figure to be segmented and poorly tracked.
@@ -34,21 +42,43 @@ As well as proportions length-wise, the model's stature could also be adjusted i
 
 \subsubsection{Model Degrees of Freedom}
 
-More degrees of freedom to measure back roundness
+Another future enhancement to the application might be the introduction of a more advanced model. The model currently has 5 degrees of freedom that the optimiser will use to adjust the model to fit the figure. This works well in practice, and gives enough information to analyse the majority of factors affecting squat form.
 
-\subsubsection{Recording Output For Later Viewing}
+The spine is currently modelled as a rigid line from the shoulder/neck area to the hip. Of course this is not the case in the human body, where the spine is made up of a series of vertebrae. The spine can bend in an arc both forwards and backwards, and this can occur during squats. Perhaps a model which treated the spine as a series of connected vertebrae might track the figure better. This would also provide the ability to check whether the lifter's back was rounded in a squat, which can cause injury.
+
+An increase in the degrees of freedom will have a detrimental effect on the performance of the fitting, giving it more variables to optimise over.
+
+\subsubsection{Recording Analysis}
+
+An interesting idea for a feature mentioned by a user in section~\ref{sec:user_testing} was the notion of recording the output of the application for later viewing. This would then allow the user to review their squat form themselves, and check whether the model tracked them accurately enough to see if its feedback is genuine.
+
+The ability to replay a squat with an overlay of a skeleton would be a very helpful way for a lifter to review their form and learn how to improve their squats. Should this be done, it may also be worth implementing more visual feedback displayed on the screen. Joints and angles of interest could be highlighted, and labels could show the particular issues with form during the lift. At present, the application shows a ``weight distribution line'' from the centre of the weight down to the lifter's feet when the weight is in an incorrect position, but this visual form of feedback could be expanded upon in line with the verbal feedback.
 
 \subsubsection{Voice Commands}
 
+A way in which the level of physical interaction with the application could be minimised might be through the use of voice commands. At present once the lifter has placed their device in a still location with a clear view of the lifting area, the lifter must press the ``Start'' button. They then walk into view, and are detected when they stand still in clear view. Pressing the start button could be eliminated via a ``Start'' voice command, which would mean that once the lifter has placed their device, they no longer need to physically interact with it until they have finished using it.
+
+Instead of automatically fitting the model to the lifter after standing still and in view, the lifter could initiate the initial fitting with a voice command. This would allow the lifter to spend more time setting up for their lift, which would be particularly useful should they like to make small adjustments to the placement of their feet.
+
+Other voice commands could be used during the squatting phase should the lifter realise they did not set their preferences as desired. For example if after their first repetition the lifter realised they did not have the sound on, they could issue a command to switch it on and continue their set with verbal feedback.
+
 \subsubsection{Other Lifts}
 
-Deads, bench, clean & jerk, snatch
+As well as general enhancements to the current algorithm and application, there are many other lifts that could be introduced, each with their own factors affecting their form.
+
+The deadlift and bench press are the other two powerlifting techniques that would be useful to analyse. Deadlifts would be particularly useful, being an advanced technique that often causes back injury due to incorrect form. A particular challenge with deadlifts might be that the bar is usually placed in the lifting location prior to the lifter entering the scene. This is unlike a squat, where the lifter and bar will enter the view together. With the current algorithm, the bar would be detected as background whilst on the ground, and only as foreground once it left the ground. A very similar model could be used, only requiring the addition of arms to the current model used for squats.
+
+The bench press would come with other challenges. A different viewpoint may be required to check whether the lift has been executed correctly - factors such as the position of the bar along the lifter's body, the angle of the lifter's elbows, whether the bar touched the lifter's chest, and many others cannot all be determined from the same viewpoint.
+
+Other lifts that this technology could be applied to are the Olympic weightlifting techniques. The two Olympic weightlifting techniques are the ``clean and jerk'' and the ``snatch''. These lifts are more complicated than the powerlifting techniques, with several stages to each lift with the goal of raising the bar above the lifter's head. Each of these lifts however could be monitored side-on with a monocular camera to check the majority of factors determining the safety and validity of the lift. Whilst powerlifting techniques are used a lot in general training at the gym (whether for sport or recreationally), Olympic weightlifting techniques are more commonplace in a professional environment. This might mean that there is scope for other methods such as the use of a stereo camera or Kinect to separate the lifter from their surroundings, and to track the technique in a three dimensional way. 
 
 \subsubsection{Social Network}
 
-Share scores, compete, give feedback etc.
+Perhaps another future enhancement to this application would be to build a social network around it. This could allow users to share scores and compete with one another, encouraging them to work on their squat form and to keep training at the gym.
 
+This idea could be taken even further, with the possibility of sharing videos of their tracked squats. This way lifters would be able to receive feedback from a community of gym-goers as well as from the analysis of the application. Human observers would be able to provide a more accurate critique of squat form, and will be able to pick up on errors that are too subtle to be detected by the application.
 
+This would enrich the overall user experience of the application, and provide users with even better feedback.
 
 \subsection{Launch}
 
