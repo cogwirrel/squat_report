@@ -1,1 +1,63 @@
 \section{Future Work}
+
+\subsection{Improvements to the Application}
+
+In light of the evaluation, there are several improvements that could be made to the application.
+
+\subsubsection{Background Subtraction Algorithm}
+
+One of the points raised in the evaluation was that the model would sometimes stray from the figure whilst tracking. This seemed to be due to fluctuations in the lighting of the room. Most gyms have even lighting, but the ambient lighting would gradually change over time (for example the sun outside emerging from clouds), causing the background pixels to change their colour.
+
+This issue could be addressed by using a more adaptive background subtraction algorithm. One proposal for this algorithm is to take the pixels that have been determined not to be foreground, and updating these pixels in the background model to a weighted average of the previous value and the new value. This would give us a background model which changes over time, allowing for gradual changes in lighting.
+
+Another point raised in the evaluation was the difficulty in using the application in a busy gym during peak times. The application is robust to a certain degree of movement in the background during the tracking and analysis phase, meaning that a figure walking into view or performing an exercise in the background will not effect it too much. However when the application first loads, it must be placed in a still location, and in order to check that the application is still, it uses the camera to make sure that there is no motion in the feed. This means that the application must point to a clear area in order to start.
+
+An option to avoid this requirement in the detection phase might be to switch off the motion detection and allow the user to start the processing at any time. This would not be as intuitive, as the user will not be as well informed that the phone must be placed in a still location.
+
+Another option might be to use the Android API to access the accelerometer of the mobile device, checking its readings to detect when the device is set up correctly.
+
+\subsubsection{Resolution}
+
+At present the resolution of the application is fairly low. Higher resolutions were tested, but the increased number of pixels reduced the reliability of background subtraction, often causing the figure to be segmented and poorly tracked.
+
+The primary disadvantage of a low resolution is the low quality of the frames displayed to the user. In order to maintain the performance of background subtraction and the speed increase of processing fewer pixels, a future extension might be to display higher quality frames than are actually being processed. The algorithm could run on low quality frames, whilst displaying the model scaled to fit to the larger frame. This would have a minimal impact on the speed of the application, and no impact on the tracking, and provide the user with higher quality frames to give the application a more professional feel.
+
+\subsubsection{Model Proportions}
+
+The model is scaled to fit the lifter using a single scale factor, determined during the detection phase of the algorithm. Whilst this single scale factor adjusts the size of the model to fit the lifter, it does not adjust the model's proportions.
+
+Through user testing, it was found that tracking is fairly robust for users with different proportions. However tracking could be improved by adjusting the models proportions to fit the lifter. It is a difficult challenge in computer vision to find the lifter's joints in order to automatically set the model's proportions, but this is something that could be investigated further to provide a more intuitive experience.
+
+Another option might be to allow a user to set the model's proportions in the settings. This could be a simple process of inputting measurements (which would require a tape-measure) or perhaps a more interesting way would be to prompt the user to take a photo of themselves side-on using their mobile device, and have them mark their joints by tapping each joint location. The model could be drawn onto the screen as they tap, and the user could drag the joints to fine tune them once finished.
+
+As well as proportions length-wise, the model's stature could also be adjusted in the settings. This may provide better tracking and analysis for lifters of varying weight.
+
+\subsubsection{Model Degrees of Freedom}
+
+More degrees of freedom to measure back roundness
+
+\subsubsection{Recording Output For Later Viewing}
+
+\subsubsection{Voice Commands}
+
+\subsubsection{Other Lifts}
+
+Deads, bench, clean & jerk, snatch
+
+\subsubsection{Social Network}
+
+Share scores, compete, give feedback etc.
+
+
+
+\subsection{Launch}
+
+\subsection{Other Applications}
+
+\subsubsection{Sports}
+
+cycling, gymnastics
+
+\subsubsection{Other Fields}
+
+interactive ui/ game
