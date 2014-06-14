@@ -19,3 +19,11 @@ A small but powerful tool in improving the performance of the application was th
 Capping the number of iterations at too high a value would mean that in the worst case the frame rate would be slow, giving the user a poor experience. Too low a value would mean that the fit per-frame would not be accurate enough, causing the model to poorly follow the figure and give bad analysis results.
 
 A good value which met this trade-off was 20 iterations. This gave a good enough fit and a fast frame rate. The faster frame rate also meant that the fitting could run on more frames, giving a better overall fit over time.
+
+\subsubsection{Point Cache}
+
+In order to draw the model, the start and end points of each ellipse must be calculated based on the coordinates of the toe and the angle of each joint. This is performed using simple trigonometry, taking the angle and length of each component to generate each point.
+
+These points are queried several times per model state in order to check the form of the squat. To avoid recalculating the points upon every query, we store the points in a cache. When the points are first calculated, they are stored in the cache. Every time thereafter the points are retrieved directly from the cache, until the model's angles are adjusted by the optimiser.
+
+This provided a reasonable speed-up due to the high frequency of calls to the point calculation function.
