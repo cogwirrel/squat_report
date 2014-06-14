@@ -20,7 +20,19 @@ Another option might be to use the Android API to access the accelerometer of th
 
 \subsubsection{Squat Rack}
 
-Many lifters will perform their squats within the squat rack, which provides bars to catch the weight should they fail to execute the lift. These bars obstruct the view of the lifter, and therefore the current tracking algorithm cannot follow a lifter inside the rack.
+Many lifters will perform their squats within the squat rack, which provides bars to catch the weight should they fail to execute the lift. These bars obstruct the view of the lifter, and therefore the current tracking algorithm cannot follow a lifter inside the rack. Figure~\ref{fig:squatrack} shows the application failing to track the lifter inside a squat rack.
+
+\begin{figure}[H]
+    \centering
+    \subfigure{
+            \includegraphics[height= 9cm]{future/images/squatrack}
+    }
+    \subfigure{
+            \includegraphics[height= 9cm]{future/images/squatrackfail}
+    }
+\caption{Tracking fails with stationary obstructions such as a squat rack}
+\label{fig:squatrack}
+\end{figure}
 
 This is not a major problem, as many lifters will be happy to perform their lifts away from the rack, especially during training when lifting weights that the lifter knows they will not fail with. When a lifter attempts a new personal record, or a weight they are unsure that they are able to lift, they will use the squat rack. In this case they would not be able to use the application.
 
