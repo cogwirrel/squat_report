@@ -80,17 +80,42 @@ The combination of background subtraction, model and optimisation tracks the lif
 
 As the application analyses squat form using computer vision, it is difficult to evaluate it quantitatively. It is possible however to compare the scores given by the application with scores given by an expert observing the squat, to give a semi-quantitative measure of the application's performance.
 
-%TODO lots of screenshots and tables and stuff from saturday's squat sesh!
+In this experiment, 84 squats were performed, observed both by the application and an expert. Figure~\ref{fig:scorediff} shows a radial plot with the expert awarded score in blue, and the application awarded score in red:
 
+\begin{figure}[H]
+    \centering
+	\includegraphics[height=6cm]{evaluation/images/scores_difference}
+\caption{Expert awarded scores plotted against application awarded scores}
+\label{fig:scorediff}
+\end{figure}
+
+Of the 84 squats scored, 17 did not track accurately throughout the lift. Removing these repetitions gives the following results in figure~\ref{fig:scorediffgood}
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[height=6cm]{evaluation/images/scores_difference_goodtrack}
+\caption{Expert awarded scores plotted against application awarded scores, with inaccurately tracked repetitions removed}
+\label{fig:scorediffgood}
+\end{figure}
+
+The full dataset gathered for this experiment is available in the appendix (section \ref{sec:analysis_eval_scores}).
+
+The figures show the lines following similar paths, meaning that the application scores squats in a similar manner to an expert. With squats that did not track correctly included, the Pearson product-moment correlation coefficient is 0.37, which shows a reasonable positive correlation between the expert awarded scores and the application awarded scores. Removing the incorrectly tracked squats, the correlation coefficient is 0.68, which shows a strong positive correlation, meaning that scores when an expert scores a squat highly, the application is also likely to score the squat highly.
+
+On average, the expert awarded a score around 7.5\% higher than the application (excluding squats incorrectly tracked). This was largely due to penalties for the angle at the knees expanding at a faster rate than that of the hips, where the difference in rate was near-negligible and could not be spotted by eye.
+
+From these results it can be seen that the application, although less generous, scores squats relative to one another in a similar manner to an expert. Thus it can be concluded that the application offers reasonably accurate analysis of squat form.
 
 \subsection{Resource Usage}
 
-Another way in which the application can be evaluated is by its use of resources. Resources on a mobile device include the CPU usage, memory usage and battery usage.
+Another way in which the application can be evaluated is by its use of resources. Resources on a mobile device include the CPU, battery and memory.
 
+\subsubsection{CPU and Battery Usage}
 In terms of CPU usage, this application is quite resource intensive. Processing video frames in real time means that the CPU is used constantly while the application is running. This level of CPU usage can be expected by a user however, as it is widely understood that video processing (especially that which runs in real time) requires a large proportion of CPU time.
 
-The amount of CPU usage has a knock-on effect on the power consumption. It was measured that running the tracking stage of the algorithm over a time period of 2 minutes and 56 seconds, the battery level of the Samsung Galaxy S4 was drained by 2\%. This is quite a high consumption rate, however the application is unlikely to be used for long periods of time, and so consumption for this application is less of a concern than that of a background service for example. A lifter will on average perform squats for no longer than 30 minutes including rest periods, and so we can estimate that in the worst case the application will drain the battery of the mobile device by approximately 20\% over the course of the session.
+The amount of CPU usage has a knock-on effect on the power consumption. It was measured that running the tracking stage of the algorithm over a time period of 2 minutes and 56 seconds, the battery level of the Samsung Galaxy S4 was drained by 2\%. This is quite a high consumption rate, although not significantly higher than that of the Samsung Camera application, which drained 2\% of the battery over 4 minutes and 12 seconds. The application is unlikely to be used for long periods of time, and so consumption for this application is less of a concern than that of a background service for example. A lifter will on average perform squats for no longer than 30 minutes including rest periods, and so we can estimate that in the worst case the application will drain the battery of the mobile device by approximately 20\% over the course of the session.
 
+\subsubsection{Memory Usage}
 Memory usage was monitored during the running of the application using the Android command:
 
 \texttt{adb shell dumpsys meminfo <package\_name>}
@@ -105,6 +130,7 @@ We can compare this memory usage to other Android applications. The following ta
 	    \hline
 	    \textbf{Application} & \textbf{Average Memory Usage (MB)} \\ \hline
 	    Facebook & 109 \\ \hline
+	    Squat! & 63 \\ \hline
 	    Instagram & 44 \\ \hline
 	    YouTube & 41 \\ \hline
 	    GMail & 25 \\ \hline
