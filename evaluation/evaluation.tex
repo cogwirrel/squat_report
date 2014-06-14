@@ -83,6 +83,42 @@ As the application analyses squat form using computer vision, it is difficult to
 %TODO lots of screenshots and tables and stuff from saturday's squat sesh!
 
 
+\subsection{Resource Usage}
+
+Another way in which the application can be evaluated is by its use of resources. Resources on a mobile device include the CPU usage, memory usage and battery usage.
+
+In terms of CPU usage, this application is quite resource intensive. Processing video frames in real time means that the CPU is used constantly while the application is running. This level of CPU usage can be expected by a user however, as it is widely understood that video processing (especially that which runs in real time) requires a large proportion of CPU time.
+
+The amount of CPU usage has a knock-on effect on the power consumption. It was measured that running the tracking stage of the algorithm over a time period of 2 minutes and 56 seconds, the battery level of the Samsung Galaxy S4 was drained by 2\%. This is quite a high consumption rate, however the application is unlikely to be used for long periods of time, and so consumption for this application is less of a concern than that of a background service for example. A lifter will on average perform squats for no longer than 30 minutes including rest periods, and so we can estimate that in the worst case the application will drain the battery of the mobile device by approximately 20\% over the course of the session.
+
+Memory usage was monitored during the running of the application using the Android command:
+
+\texttt{adb shell dumpsys meminfo <package\_name>}
+
+This provides an output of the current memory usage of the application. On average, the application used around 63MB of RAM. Of this, 56MB was ``private dirty'' memory, which details the RAM that is used solely by the application, and cannot be swapped into virtual memory or shared with another application.
+
+We can compare this memory usage to other Android applications. The following table shows the memory usage of this application against other common applications:
+
+\begin{figure}[H]
+    \centering
+	\begin{tabular}{ | l | l | }
+	    \hline
+	    \textbf{Application} & \textbf{Average Memory Usage (MB)} \\ \hline
+	    Facebook & 109 \\ \hline
+	    Instagram & 44 \\ \hline
+	    YouTube & 41 \\ \hline
+	    GMail & 25 \\ \hline
+	    Samsung Camera & 25 \\
+	    \hline
+    \end{tabular}
+\caption{Average Memory Usage of Common Android Applications}
+\label{fig:memusage}
+\end{figure}
+
+As shown in figure~\ref{fig:memusage}, the application's memory usage is greater than most common applications, however it is not outrageously high, being less than that of Facebook - a very widely used application.
+
+It can be concluded that although fairly resource intensive, the application does not use an impractical level of resources and is suitable for use.
+
 \subsection{User Testing Evaluation}
 \label{sec:user_testing}
 In addition to the evaluation against the goal, the application was also evaluated by a set of three users. These users are gym-goers of differing experiences: Harry Stevenson has been lifting weights for around three months, Greg Pye has been going to the gym for a little over a year, and Tom Wilding has been lifting for around four years.
@@ -111,6 +147,11 @@ Greg Pye:
 \textbf{9/10} \emph{Very easy to use with verbal and text prompts and a simple interface. I think it'll take a user a couple of attempts of using the app with no prior instructions or help in terms of it needing the background to be still and you need to select which way to face. But after one or two tries I think it's a doddle to use.}
 \end{quote}
 
+Tom Wilding:
+\begin{quote}
+\textbf{9/10} \emph{The app is very intuitive because of its simplistic UI and real time voice feedback. It could highlight more the fact that the camera needs to be completely still and that there must be no one in view at the start.}
+\end{quote}
+
 \subsubsection{Accuracy in Tracking and Analysis}
 
 Harry Stevenson:
@@ -121,6 +162,11 @@ Harry Stevenson:
 Greg Pye:
 \begin{quote}
 \textbf{9/10} \emph{As long as conditions are good the app recognises and tracks very well. Certainly far higher accuracy than I would ever expect from running such real-time processing on a phone and from its own camera too.}
+\end{quote}
+
+Tom Wilding:
+\begin{quote}
+\textbf{10/10} \emph{The application was capable of tracking accurately and provided relevant tips on depth and form. The tracking is particularly impressive as it just uses the camera with no manual calibration or tracking points.}
 \end{quote}
 
 \subsubsection{Training Aid}
@@ -135,6 +181,11 @@ Greg Pye:
 \textbf{7/10} \emph{I have pretty good squat form to begin with. But it did highlight a tendency at times to be a bit further forward than needs be. Nothing major to correct but will definitely keep an eye on that.}
 \end{quote}
 
+Tom Wilding:
+\begin{quote}
+\textbf{8/10} \emph{The application provides good real time feedback and visualisation however it is difficult to see the screen whilst undertaking the exercise as the camera must be positioned adjacent to the user. For me, the application was mainly helpful as a guide, to check form and depth, however would be impractical to set up every time when training. I think it would be very useful for a beginner to learn independently how to improve technique.}
+\end{quote}
+
 \subsubsection{Additional Feedback}
 
 Harry Stevenson:
@@ -147,6 +198,11 @@ Greg Pye:
 \emph{I think it's a great app - only limited by a gym being busy and so hard to get a still background, especially during peak times. It would be good if the app could record the session so you could play back. This means you can see how good the tracking actually was to come up with the rep's score and also watch your squat form too. I think that will be useful - especially for someone training on their own.}
 \end{quote}
 
+Tom Wilding:
+\begin{quote}
+\emph{Although a third party screen recording application can be used to record the analysis, it would be good if the application recorded each set for later review. Perhaps a more detailed analysis could be provided or slow motion replays after the real time analysis.}
+\end{quote}
+
 \subsubsection{Summary of User Evaluation}
 
-From the feedback received we can evaluate the project as a success...???
+From the feedback received, the project can be evaluated as a success, meeting the goal of providing accurate real-time feedback on squat form to aid in training. Whilst not always practical for everyday use at the gym due to the overhead of finding a position to rest the mobile device, it was deemed a very useful tool for beginners to learn correct squat technique without an expert guiding them.
