@@ -1,6 +1,20 @@
 \subsubsection{Optimisation and Fitting}
 
-The optimiser finds the model parameters that best fit the current video frame. It does this using an optimisation algorithm and a cost function.
+The optimiser finds the model parameters that best fit the model to the current background subtracted video frame. Figure~\ref{fig:modelfit} shows the objective of the optimiser.
+
+\begin{figure}[H]
+    \centering
+    \subfigure[Background Subtracted Frame]{
+            \includegraphics[height= 7cm]{algorithm/images/modelmatchbg}
+    }
+    \subfigure[Model]{
+            \includegraphics[height= 7cm]{algorithm/images/modelmatch}
+    }
+\caption{The model (b) is fit to the background subtracted frame (a)}
+\label{fig:modelfit}
+\end{figure}
+
+The optimiser does this using an optimisation algorithm and a cost function.
 
 The optimisation algorithm used is BOBYQA, which stands for Bound Optimisation BY Quadratic Approximation. This is an iterative algorithm for finding the minimum value of a function, given a set of bounded variables. The algorithm was developed by M. Powell, and is detailed in his paper\cite{bobyqa}.
 
@@ -27,5 +41,22 @@ The third attempt was to minimise pixels of the model that did not overlap the s
 \centerline{$cost = countNonZero(m \& ~f)$}
 
 The second cost function seemed to provide the best fit, and it is likely that this is due to the larger cost value returned by the second function being less likely to change dramatically for small changes in the model angles. For this reason the second cost function was chosen for the algorithm.
+
+Figure~\ref{fig:modeloverlap} shows the model drawn on top of the foreground frame. Pixels coloured white are those that overlap after running BOBYQA using the chosen cost function. Pixels in grey are those of the model and foreground that do not overlap. Thus the chosen cost function attempts to minimise the number of grey and black pixels.
+
+\begin{figure}[H]
+    \centering
+    \subfigure{
+            \includegraphics[height= 7cm]{algorithm/images/modelfitstart}
+    }
+    \subfigure{
+            \includegraphics[height= 7cm]{algorithm/images/modelfitmid}
+    }
+    \subfigure{
+            \includegraphics[height= 7cm]{algorithm/images/modelfitend}
+    }
+\caption{Model fitting by minimising pixels that do not overlap}
+\label{fig:modeloverlap}
+\end{figure}
 
 At this stage in the algorithm we have obtained a foreground frame and a model, and through the optimisation the model has been fit to the foreground. Therefore on each frame the model is in the same position as the figure performing the squat. This does assume that the fit was perfect, which in practice is not the case, but the fit is generally good enough to assume that the model is in a position reasonably similar to that of the figure.
