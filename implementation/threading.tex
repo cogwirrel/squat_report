@@ -1,0 +1,7 @@
+\subsection{Threading}
+
+The application makes use of two main threads - the graphics/UI thread and the processing thread.
+
+The graphics thread will read a frame from the android camera, and store it for use by the processing thread. The graphics thread will then draw an output frame previously stored by the processing thread. The processing thread reads frames stored by the graphics thread, processes them, and stores them for output by the graphics thread.
+
+This multi-threaded model ensures that the user interface does not hang whilst tracking is in effect. It also means that the slow operation of reading a frame from the camera and drawing it on the screen can be done in parallel to the processing of frames, allowing for a faster application overall.
