@@ -14,11 +14,11 @@ The use of \texttt{MatManager} dramatically increased the speed of the applicati
 
 \subsubsection{Model Fitting}
 
-A small but powerful tool in improving the performance of the application was the maximum number of iterations that the BOBYQA optimiser was permitted to perform. When unbounded around 50 iterations were completed before the best fit was found for every frame. Some frames required a much larger number of iterations, in some cases an order of magnitude larger than the norm. This would cause the application to freeze temporarily, as the CPU intensive fitting was performed for many iterations. To avoid this it was required to cap the number of iterations to a sensible value.
+A small but powerful tool in improving the performance of the application was the maximum number of iterations that the BOBYQA optimiser was permitted to perform. When unbounded around fifty iterations were completed before the best fit was found for every frame. Some frames required a much larger number of iterations, in some cases an order of magnitude larger than the norm. This would cause the application to freeze temporarily, as this CPU intensive process was performed for many iterations. To avoid this it was required to cap the number of iterations to a sensible value.
 
-Capping the number of iterations at too high a value would mean that in the worst case the frame rate would be slow, giving the user a poor experience. Too low a value would mean that the fit per-frame would not be accurate enough, causing the model to poorly follow the figure and give bad analysis results.
+Capping the number of iterations at too high a value would mean that in the worst case the frame rate would be slow, giving the user a poor experience. Too low a value would mean that the fit per frame would not be accurate enough, causing the model to poorly follow the figure and give bad analysis results.
 
-A good value which met this trade-off was 20 iterations. This gave a good enough fit and a fast frame rate. The faster frame rate also meant that the fitting could run on more frames, giving a better overall fit over time.
+A good value which met this trade-off was twenty iterations. This gave a good enough fit and a fast frame rate. The faster frame rate also meant that the fitting could run on more frames, giving a better overall fit over time.
 
 \subsubsection{Point Cache}
 
