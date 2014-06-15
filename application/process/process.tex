@@ -9,7 +9,7 @@ The steps that a user of the application will follow are detailed in this sectio
 \label{fig:ensuresurroundings}
 \end{figure}
 
-The user begins by starting up the application. They will immediately see a video feed of the front-facing camera of their Android mobile device. They will see a message at the very top of the screen, instructing them in the first step they must take: ``Ensure surroundings are still''.
+The user begins by starting up the application. They will immediately see a video feed of the front-facing camera of their Android mobile device. They will see a message at the top of the screen, instructing them in the first step they must take: ``Ensure surroundings are still''.
 
 A button at the bottom of the screen displays the text ``Wait...'', indicating that some action must be performed before the button can be pressed. Figure~\ref{fig:ensuresurroundings} shows this screen.
 
@@ -46,7 +46,7 @@ The user will follow these instructions, collecting their barbell from the squat
 \label{fig:startsquatting}
 \end{figure}
 
-Once the user has moved into position, and stood still following the instructions, the application will emit a beep as it fits the initial model to the user. As it does this, the video feed will add an overlay showing the model drawn as a skeleton - with lines connecting points in a stick figure fashion. Although this is not the model drawing method used in fitting, it is more intuitive for the user to see a skeleton view than the model constructed of ovals. This encapsulates the underlying functionality, displaying the model in a user-friendly way. From this, the user can see that they have been recognised by the application, and that the application has started to track their movement. Figure~\ref{fig:startsquatting} shows this stage.
+Once the user has moved into position, and stood still following the instructions, the application will emit a beep as it fits the initial model to the user. As it does this, the video feed will add an overlay showing the model drawn as a skeleton - with lines connecting points in a stick figure fashion. Although this is not the model drawing method used in fitting, it is more intuitive for the user to see a skeleton view than the model constructed of ellipses. This encapsulates the underlying functionality, displaying the model in a user-friendly way. From this, the user can see that they have been recognised by the application, and that the application has started to track their movement. Figure~\ref{fig:startsquatting} shows this stage.
 
 \begin{figure}[H]
     \centering
@@ -73,7 +73,7 @@ As the user descends low enough for the squat to be considered valid, the applic
 \label{fig:weightdistro}
 \end{figure}
 
-Another element of visual feedback is a line which shows the weight distribution of the squat. For a squat to be optimal, the bar must be directly above the feet at all times, giving the user maximum leverage to support the weight. Should the application detect that this is not the case, and the weight is too far in front of the lifter's toes, or too far behind the lifter's heels, a red vertical line is drawn from the bar to the feet, as shown in figure~\ref{fig:weightdistro}. This traces the weight's position above the feet, showing that it is too far forward or backward.
+Another element of visual feedback is a line which shows the weight distribution of the squat. For a squat to be optimal, the bar must be directly above the feet at all times, giving the user maximum leverage to support the weight. Should the application detect that this is not the case and the weight is too far in front of the lifter's toes, or too far behind the lifter's heels, a red vertical line is drawn from the bar to the feet, as shown in figure~\ref{fig:weightdistro}. This traces the weight's position above the feet, showing that it is too far forward or backward.
 
 \begin{figure}[H]
     \centering
@@ -87,6 +87,8 @@ As the user completes the ascension part of the squat (thus completing one full 
 So as not to bore the user with the same repetitive messages, slight variations of each tip are chosen at random, depending on the main problem with the squat. For example if the user fails to squat deep enough, they may be told to ``Squat deeper.'' or ``Try to squat below parallel'' or one of many other variations.
 
 The part of the feedback which tells the user how well their squat was performed overall can be one of the following: ``Not very good.'', ``Ok.'', ``Good.'', ``Very good.'', ``Excellent'', ``Perfect''. These are selected based on the score for the rep that they have just completed. For example, ``Very good.'' is said should the user achieve a score between 70\% and 90\%. When a user achieves a score above 90\%, the verbal feedback will not provide the user with a tip. This gives the user a more satisfying experience, encouraging the user to strive towards good squatting technique.
+
+The full range of vocal feedback is detailed in the appendix in section~\ref{sec:appendix_feedback}.
 
 \begin{figure}[H]
     \centering
