@@ -9,9 +9,9 @@ The steps that a user of the application will follow are detailed in this sectio
 \label{fig:ensuresurroundings}
 \end{figure}
 
-The user begins by starting up the application. They will immediately see a video feed of the front-facing camera of their Android mobile device. They will see a message at the top of the screen, instructing them in the first step they must take: ``Ensure surroundings are still''.
+The user begins by starting up the application. They will immediately see a video feed of the front-facing camera of their Android mobile device. They will see a message at the top of the screen, instructing them in the first step they must take: `Ensure surroundings are still.
 
-A button at the bottom of the screen displays the text ``Wait...'', indicating that some action must be performed before the button can be pressed. Figure~\ref{fig:ensuresurroundings} shows this screen.
+A button at the bottom of the screen displays the text `Wait...', indicating that some action must be performed before the button can be pressed. Figure~\ref{fig:ensuresurroundings} shows this screen.
 
 \begin{figure}[H]
     \centering
@@ -20,7 +20,7 @@ A button at the bottom of the screen displays the text ``Wait...'', indicating t
 \label{fig:pressstart}
 \end{figure}
 
-As the user follows the on-screen instruction of ensuring that their surroundings are still, they will notice that the instruction text changes to ``Press Start'' automatically, and the button displays ``Start'' and is lightened to indicate that it may be pressed. This screen is shown in figure~\ref{fig:pressstart}.
+As the user follows the on-screen instruction of ensuring that their surroundings are still, they will notice that the instruction text changes to `Press Start' automatically, and the button displays `Start' and is lightened to indicate that it may be pressed. This screen is shown in figure~\ref{fig:pressstart}.
 
 This initial stage of disabling and enabling the button ensures that the user places their phone in a location where it will not move, to allow background subtraction to work effectively. It also ensures that there is no movement in the background, which may distort the background subtraction and cause the model to `lock on' to a different figure.
 
@@ -33,11 +33,11 @@ The application tolerates a little movement, meaning that movement too far away 
 \label{fig:foundfigure}
 \end{figure}
 
-As a side note, there is also a button to the right of the start button. This button is used to flip the expected orientation of the lifter. It defaults to expect the lifter to face left (as they look at the screen). When this button is pressed, the figure in the icon flips to indicate that the lifter must stand facing the opposite direction. Vocal feedback is also used, with a voice saying ``Face left.'' or ``Face right.'' to confirm this change of orientation.
+As a side note, there is also a button to the right of the start button. This button is used to flip the expected orientation of the lifter. It defaults to expect the lifter to face left (as they look at the screen). When this button is pressed, the figure in the icon flips to indicate that the lifter must stand facing the opposite direction. Vocal feedback is also used, with a voice saying `Face left.' or `Face right.' to confirm this change of orientation.
 
-Once the start button is enabled, the user presses the button, and immediately receives vocal directions to ``Walk into view and stand still, facing left'', as well as the instruction text changing to ``Walk into view''. The vocal instruction here will say ``Walk into view and stand still, facing right'' should the orientation have been changed by the user.
+Once the start button is enabled, the user presses the button, and immediately receives vocal directions to `Walk into view and stand still, facing left', as well as the instruction text changing to `Walk into view'. The vocal instruction here will say `Walk into view and stand still, facing right' should the orientation have been changed by the user.
 
-The user will follow these instructions, collecting their barbell from the squat rack out of view, and walking into the application's view. As the user walks into view, the instruction text will update to indicate that the user has been recognised by the application: ``Found figure, stand still''. This is shown in figure~\ref{fig:foundfigure}.
+The user will follow these instructions, collecting their barbell from the squat rack out of view, and walking into the application's view. As the user walks into view, the instruction text will update to indicate that the user has been recognised by the application: `Found figure, stand still'. This is shown in figure~\ref{fig:foundfigure}.
 
 \begin{figure}[H]
     \centering
@@ -55,7 +55,7 @@ Once the user has moved into position, and stood still following the instruction
 \label{fig:midsquat}
 \end{figure}
 
-As the model is displayed and the application beeps, the application's voice will indicate the next move expected from the user by saying ``Start squatting when ready.''. The user may now begin squatting in their own time. As they squat, the skeleton on screen will be updated in real-time as the tracking part of the algorithm runs, as shown in figure~\ref{fig:midsquat}.
+As the model is displayed and the application beeps, the application's voice will indicate the next move expected from the user by saying `Start squatting when ready'. The user may now begin squatting in their own time. As they squat, the skeleton on screen will be updated in real-time as the tracking part of the algorithm runs, as shown in figure~\ref{fig:midsquat}.
 
 \begin{figure}[H]
     \centering
@@ -82,11 +82,11 @@ Another element of visual feedback is a line which shows the weight distribution
 \label{fig:lockout}
 \end{figure}
 
-As the user completes the ascension part of the squat (thus completing one full repetition) and `locks out', the skeleton is again coloured green as shown in figure~\ref{fig:lockout}. At this point, the application detects that a repetition has been completed, and provides the user with vocal feedback. This vocal feedback includes the current rep number, how successful the squat was, and a tip on how to improve the squat if necessary. An example might be ``Two. Good. Try leaning forward a little more.'', or ``Four. Ok. Try squatting deeper.''.
+As the user completes the ascension part of the squat (thus completing one full repetition) and `locks out', the skeleton is again coloured green as shown in figure~\ref{fig:lockout}. At this point, the application detects that a repetition has been completed, and provides the user with vocal feedback. This vocal feedback includes the current rep number, how successful the squat was, and a tip on how to improve the squat if necessary. An example might be `Two. Good. Try leaning forward a little more.', or `Four. Ok. Try squatting deeper.'.
 
-So as not to bore the user with the same repetitive messages, slight variations of each tip are chosen at random, depending on the main problem with the squat. For example if the user fails to squat deep enough, they may be told to ``Squat deeper.'' or ``Try to squat below parallel'' or one of many other variations.
+So as not to bore the user with the same repetitive messages, slight variations of each tip are chosen at random, depending on the main problem with the squat. For example if the user fails to squat deep enough, they may be told to `Squat deeper.' or `Try to squat below parallel' or one of many other variations.
 
-The part of the feedback which tells the user how well their squat was performed overall can be one of the following: ``Not very good.'', ``Ok.'', ``Good.'', ``Very good.'', ``Excellent'', ``Perfect''. These are selected based on the score for the rep that they have just completed. For example, ``Very good.'' is said should the user achieve a score between 70\% and 90\%. When a user achieves a score above 90\%, the verbal feedback will not provide the user with a tip. This gives the user a more satisfying experience, encouraging the user to strive towards good squatting technique.
+The part of the feedback which tells the user how well their squat was performed overall can be one of the following: `Not very good.', `Ok.', `Good.', `Very good.', `Excellent', `Perfect'. These are selected based on the score for the rep that they have just completed. For example, `Very good.' is said should the user achieve a score between 70\% and 90\%. When a user achieves a score above 90\%, the verbal feedback will not provide the user with a tip. This gives the user a more satisfying experience, encouraging the user to strive towards good squatting technique.
 
 The full range of vocal feedback is detailed in the appendix (section~\ref{sec:appendix_feedback}).
 
