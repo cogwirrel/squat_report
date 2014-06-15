@@ -25,16 +25,16 @@ The model is defined by the following parameters:
 		\end{enumerate}
 \end{itemize}
 
-The angles are each defined from the horizontal plane, and are located at each of the models joints, where the ellipses interlock. These angles are shown in figure~\ref{fig:modelangles}
+The angles are each defined from the horizontal plane, and are located at each of the models joints, where the ellipses interlock. These angles are shown in figure~\ref{fig:modelangles}.
 
 \begin{figure}[H]
     \centering
 	\includegraphics[height=10cm]{algorithm/images/model_angles}
-\caption{The 5 angles defining the model's pose}
+\caption{The five angles defining the model's pose}
 \label{fig:modelangles}
 \end{figure}
 
-During the tracking phase, the toe coordinates and scale are fixed, and the fitting is performed over the 5 angles in the model. This means that the model has relatively view parameters, which reduces the degrees of freedom and therefore the search-space of the optimisation.
+During the tracking phase, the toe coordinates and scale are fixed and the fitting is performed over the five angles in the model. This means that the model has relatively view parameters, which reduces the degrees of freedom and therefore the search-space of the optimisation.
 
 Another advantage of the angles defining the model's position is that it is easy to query the model for information about its current posture. Easy calculations can be made as to whether the model is in the correct position by checking that angles are within an acceptable range.
 
@@ -49,6 +49,6 @@ Due to the barbell being a relatively large part of the silhouette, a circle is 
 \label{fig:modeldrawn}
 \end{figure}
 
-The model defines lengths and widths for each of its elliptical components. These are defined as absolute values, but are scaled by the constant scale factor to fit the height of the figure in view. This means that the lifter can be of any height, but a drawback is that should their proportions be different (for example long legs and a short torso), the model will not fit as accurately.
+The model defines the length and width of each of its elliptical components. These are defined as absolute values, but are scaled by the constant scale factor to fit the height of the figure in view. This means that the lifter can be of any height, but a drawback is that should their proportions be different (for example long legs and a short torso), the model will not fit as accurately.
 
 The model also defines minimum and maximum values for each of its angles. These are based on the limitations of the human body, although are reasonably relaxed to allow for maximum freedom. These restrictions reduce the search space in the optimisation, giving a faster and more accurate fit.
