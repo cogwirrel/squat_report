@@ -9,6 +9,8 @@ The application has no requirement for the user to wear any specialised equipmen
 
 A small amount of set-up is required however, as the user must take their Android device into the gym and find a place to rest it so that it is stable with a clear view of the area in which they will be squatting. The user must also ensure that there is no movement in the background before they begin squatting, which can be difficult in a busy gym.
 
+The verbal feedback given could be considered intrusive as people exercising nearby may find it distracting, however this can be switched off in the settings.
+
 In summary, the intrusiveness of the application is in the set-up procedure, but there is none during the lift itself. From this it is fair to say that the application is non-intrusive, as once set-up is complete the application requires minimum interaction. The user does not even need to watch the screen as they squat due to the feedback being given verbally.
 
 \subsection{Speed}
@@ -18,14 +20,14 @@ A quantitative measure of the real-time nature of the application is its frame r
 
 The first is that of the graphics thread, reading frames from the camera and displaying them on the screen. This frame rate remained level at a value of 15 frames per second, and provided a smooth video feed throughout the running of the application. This caps the maximum perceived frame rate to the user, as it is not possible to display frames at a faster rate.
 
-The second is that of the processing thread. Measuring the rate at which the core algorithm provides frames to be displayed by the graphics thread. This frame rate fluctuated dramatically depending on the stage of the algorithm.
+The second is that of the processing thread, measuring the rate at which the core algorithm provides frames to be displayed by the graphics thread. This frame rate fluctuated dramatically depending on the stage of the algorithm.
 
 During the initial detection stage of the algorithm, the frame rate varied between 90 and 110 frames per second. This is due to the requirement of very little processing at this point.
 
 The frame rate during the tracking and analysis stage of the algorithm is the most important, as this is where the algorithm is most resource intensive. During tracking, the frame rate was observed to vary between 22 and 28 frames per second. This is considerably faster than the limit of 15 frames per second, and shows that the algorithm developed in this project to track and analyse squats is easily capable of running in real-time.
 
 \subsubsection{Feedback}
-The application provides verbal feedback after each squat has been completed. This can be considered real-time as the user does not need to wait until they have finished their squats to receive feedback. This means that the user can adjust their technique during their set of squats according to the feedback given, allowing them to learn to squat safely and effectively.
+The application provides verbal feedback after each squat has been completed. This can be considered real-time as the user does not need to wait until they have finished their set of squats to receive feedback. This means that the user can adjust their technique during their set of squats according to the feedback given, allowing them to learn to squat safely and effectively.
 
 \subsection{Accuracy}
 Perhaps the most difficult requirement to measure is the accuracy of the application. Several approaches are taken in this section to attempt to evaluate the application's accuracy both qualitatively and quantitatively. Accuracy can be broken down into two categories - tracking accuracy and analysis accuracy.
@@ -68,9 +70,9 @@ Any movement in the background or foreground that crosses the lifter will effect
 \label{fig:badtracking}
 \end{figure}
 
-As the passer by walks into view, he is detected as foreground, and as soon as he crosses the lifter, becomes part of the largest object, pulling the model towards him. The model follows the passer by until he leaves the view, but after this the model is reasonably quick to snap back into place and continue tracking the lifter as usual.
+As the passer-by walks into view, he is detected as foreground, and as soon as he crosses the lifter, becomes part of the largest object, pulling the model towards him. The model follows the passer by until he leaves the view, but after this the model is reasonably quick to snap back into place and continue tracking the lifter as usual.
 
-In unstable lighting conditions, the background subtraction algorithm is prone to failure. When the lighting changes, the colour of pixels in the background will change and (as soon as the difference is greater than the threshold) will be detected as foreground. This then breaks down the tracking- wherever the model resides it achieves maximum overlap with the foreground, and so ceases to move. Perhaps the background subtraction algorithm could be improved to update it's known background over time, allowing for variations in lighting.
+In unstable lighting conditions, the background subtraction algorithm is prone to failure. When the lighting changes, the colour of pixels in the background will change and (as soon as the difference is greater than the threshold) will be detected as foreground. This then breaks down the tracking - wherever the model resides it achieves maximum overlap with the foreground, and so ceases to move. Perhaps the background subtraction algorithm could be improved to update its known background over time, allowing for variations in lighting.
 
 From the screenshots above, it can be seen that the application tracks reasonably well on the whole. The joint locations of the model do not always perfectly match the lifter, but the model follows the lifter with reasonable precision. The proportions of the model are fixed in the current implementation, which is likely the cause of the intermittent joint misalignment.
 
@@ -100,7 +102,7 @@ Of the 84 squats scored, 17 did not track accurately throughout the lift. Removi
 
 The full dataset gathered for this experiment is available in the appendix (section \ref{sec:analysis_eval_scores}).
 
-The figures show the lines following similar paths, meaning that the application scores squats in a similar manner to an expert. With squats that did not track correctly included, the Pearson product-moment correlation coefficient is 0.37, which shows a reasonable positive correlation between the expert awarded scores and the application awarded scores. Removing the incorrectly tracked squats, the correlation coefficient is 0.68, which shows a strong positive correlation, meaning that scores when an expert scores a squat highly, the application is also likely to score the squat highly.
+The figures show the lines following similar paths, meaning that the application scores squats in a similar manner to an expert. With squats that did not track correctly included, the Pearson product-moment correlation coefficient is 0.37, which shows a reasonable positive correlation between the expert awarded scores and the application awarded scores. Removing the incorrectly tracked squats, the correlation coefficient is 0.68, which shows a strong positive correlation, meaning that when an expert scores a squat highly, the application is also likely to score the squat highly.
 
 On average, the expert awarded a score around 7.5\% higher than the application (excluding squats incorrectly tracked). This was largely due to penalties for the angle at the knees expanding at a faster rate than that of the hips, where the difference in rate was near-negligible and could not be spotted by eye.
 
@@ -147,7 +149,7 @@ It can be concluded that although fairly resource intensive, the application doe
 
 \subsection{User Testing Evaluation}
 \label{sec:user_testing}
-In addition to the evaluation against the goal, the application was also evaluated by a set of three users. These users are gym-goers of differing experiences: Harry Stevenson has been lifting weights for around three months, Greg Pye has been going to the gym for a little over a year, and Tom Wilding has been lifting for around four years.
+In addition to the evaluation against the goal, the application was also evaluated by a set of three users. These users are gym-goers of differing experiences: Harry Stevenson has been lifting weights for around three months, Greg Pye has been training for a little over a year, and Tom Wilding has been lifting for around four years.
 
 These users took the application to the gym installed on a mobile device, and spent time using it to analyse their squat form.
 
