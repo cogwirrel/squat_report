@@ -1,5 +1,5 @@
 \subsubsection{Background Subtraction with a Moving Camera}
 
-Classical background subtraction assumes a stationary camera. In the case where a camera is hand held, or mounted in a non stationary position, we are unable to use classical background subtraction techniques. When the entire scene shifts, the majority of the scene is incorrectly identified as foreground.
+Classical background subtraction assumes a stationary camera. In the case where a camera is hand held or mounted in a non stationary position, classical background subtraction techniques cannot be used. When the entire scene shifts, the majority of the scene is incorrectly identified as foreground.
 
-One method to attempt to subtract the background for video sequences captured with moving cameras, was proposed by Y. Sheikh et al\cite{bgsubmove}. The main idea of this method is to track the trajectories of noticeable features in the sequence of frames, and to remove the background by removing parts of the video that are most likely to be following the most common trajectory.
+One method to attempt to subtract the background for video sequences captured with moving cameras, was proposed by Y. Sheikh et al\cite{bgsubmove}. The general principles of this method are to track the trajectories of noticeable features in the sequence of frames, and to subtract the background by removing parts of the video that are likely to be following the most common trajectory.
