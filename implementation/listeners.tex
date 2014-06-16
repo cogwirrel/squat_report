@@ -1,7 +1,7 @@
-\subsection{Events and Listeners}
+\section{Events and Listeners}
 \label{sec:listeners}
 
-\subsubsection{Analysis and Scoring}
+\subsection{Analysis and Scoring}
 
 Events and listeners are utilised throughout the codebase, but their most interesting use is in the analysis stage.
 
@@ -47,6 +47,6 @@ The more advanced components used in the analysis and scoring of each repetition
 
 The \texttt{ModelEventManager} provides a simple way to add new analysis functionality, whether at the low or high level.
 
-\subsubsection{Other Listeners}
+\subsection{Other Listeners}
 
 The remainder of the codebase uses listeners in order to update the user interface or provide the user with real-time feedback. This pattern was used to ensure that the core algorithm was separated from the user interface. The user interface registers itself as a listener to the \texttt{SquatPipeline}, which calls different listener functions at different stages of the algorithm. Example uses include updating the notification text in the user interface or emitting a beep whenever the lifter squats low enough.

@@ -1,12 +1,12 @@
-\section{Future Work}
+\chapter{Future Work}
 \label{sec:future}
 
-\subsection{Improvements to the Application}
+\section{Improvements to the Application}
 \label{sec:improvements}
 
 In light of the evaluation, there are several improvements that could be made to the application.
 
-\subsubsection{Background Subtraction Algorithm}
+\subsection{Background Subtraction Algorithm}
 
 One of the points raised in the evaluation was that the model would sometimes stray from the figure whilst tracking. This seemed to be due to fluctuations in the lighting of the room. Most gyms have even lighting, but the ambient lighting would gradually change over time (for example the sun outside emerging from clouds) causing the background pixels to change their colour.
 
@@ -18,13 +18,13 @@ An option to avoid this requirement in the detection phase might be to switch of
 
 Another option might be to use the Android API to access the accelerometer of the mobile device, checking its readings to detect when the device is set up correctly.
 
-\subsubsection{Tracking}
+\subsection{Tracking}
 
 Although the tracking was reasonably robust, the model did not always fit to the lifter throughout the entirety of the repetition, causing the 17 poorly tracked squats out of the 84 used in the evaluation (section~\ref{sec:analysis_eval}). A future improvement might be to investigate ways to improve the tracking. The problems are likely due to changes in lighting conditions, but there may be other factors which affect tracking.
 
 An improvement might be to have the algorithm detect when a repetition was tracked incorrectly, offering no feedback for the squat.
 
-\subsubsection{Squat Rack}
+\subsection{Squat Rack}
 
 Many lifters will perform their squats within the squat rack, which provides bars to catch the weight should they fail to execute the lift. These bars obstruct the view of the lifter, and therefore the current tracking algorithm cannot follow a lifter inside the rack. Figure~\ref{fig:squatrack} shows the application failing to track the lifter inside a squat rack.
 
@@ -44,13 +44,13 @@ This is not a major problem, as many lifters will be happy to perform their squa
 
 A future enhancement to the application would be to adjust the algorithm to allow for stationary objects in front of the lifter. One option which might allow for this may be to `join' objects detected as foreground that are reasonably close to one another, so as to create a full figure from the parts of the figure that can be seen.
 
-\subsubsection{Resolution}
+\subsection{Resolution}
 
 At present the resolution of the application is fairly low. Higher resolutions were tested, but the increased number of pixels reduced the reliability of background subtraction, often causing the figure to be segmented and poorly tracked.
 
 The primary disadvantage of a low resolution is the low quality of the frames displayed to the user. In order to maintain the performance of background subtraction and the speed increase of processing fewer pixels, a future extension might be to display higher quality frames than are actually being processed. The algorithm could run on low quality frames, whilst displaying the model scaled to fit to the larger frame. This would have a minimal impact on the speed of the application, no impact on the tracking and provide the user with higher quality frames to give the application a more professional feel.
 
-\subsubsection{Model Proportions}
+\subsection{Model Proportions}
 
 The model is scaled to fit the lifter using a single scale factor, determined during the detection phase of the algorithm. Whilst this single scale factor adjusts the size of the model to fit the lifter, it does not adjust the model's proportions.
 
@@ -60,7 +60,7 @@ Another option might be to allow a user to set the model's proportions in the se
 
 As well as proportions length-wise, the model's stature could also be adjusted in the settings. This may provide better tracking and analysis for lifters of varying weight.
 
-\subsubsection{Model Degrees of Freedom}
+\subsection{Model Degrees of Freedom}
 
 Another future enhancement to the application might be the introduction of a more advanced model. The model currently has five degrees of freedom that the optimiser will use to adjust the model to fit the figure. This works well in practice, and gives enough information to analyse the majority of factors affecting squat form.
 
@@ -68,13 +68,13 @@ The spine is currently modelled as a rigid line from the shoulder/neck area to t
 
 An increase in the degrees of freedom will have a detrimental effect on the performance of the fitting, giving it more variables to optimise over.
 
-\subsubsection{Recording for Further Analysis}
+\subsection{Recording for Further Analysis}
 
 An interesting idea for a feature mentioned by users in section~\ref{sec:user_testing} was the notion of recording the output of the application for later viewing. This would then allow the user to review their squat form themselves and check whether the model tracked them accurately enough to see if its feedback is genuine.
 
 The ability to replay a squat with an overlay of a skeleton would be a very helpful way for a lifter to review their form and learn how to improve their squats. Should this be done, it may also be worth implementing more visual feedback displayed on the screen. Joints and angles of interest could be highlighted, and labels could show the particular issues with form during the lift. At present, the application shows a `weight distribution line' from the centre of the weight down to the lifter's feet when the weight is in an incorrect position, but this visual form of feedback could be expanded upon in line with the verbal feedback.
 
-\subsubsection{Voice Commands}
+\subsection{Voice Commands}
 
 A way in which the level of physical interaction with the application could be minimised might be through the use of voice commands. At present once the lifter has placed their device in a still location with a clear view of the lifting area, the lifter must press the `Start' button. They then walk into view, and are detected when they stand still in clear view. Pressing the start button could be eliminated via a `Start' voice command, which would mean that once the lifter has placed their device, they no longer need to physically interact with it until they have finished using it.
 
@@ -84,7 +84,7 @@ Other voice commands could be used during the squatting phase should the lifter 
 
 Voice commands may be impractical in the environment of a gym however, as the sound of music and machines may mean that the application cannot hear the lifter. The distance of the lifter to the device may also cause the commands to be distorted.
 
-\subsubsection{Other Lifts}
+\subsection{Other Lifts}
 
 As well as general enhancements to the current algorithm and application, there are many other lifts that could be introduced, each with their own factors affecting their form.
 
@@ -94,7 +94,7 @@ The bench press would come with other challenges. A different viewpoint may be r
 
 Other lifts that this technology could be applied to are the Olympic weightlifting techniques. The two Olympic weightlifting techniques are the `clean and jerk' and the `snatch'. These lifts are more complicated than the powerlifting techniques, with several stages to each lift with the goal of raising the bar above the lifter's head. Each of these lifts however could be monitored side-on with a monocular camera to check the majority of factors determining the safety and validity of the lift. Whilst powerlifting techniques are used a lot in general training at the gym (whether for sport or recreationally), Olympic weightlifting techniques are more commonplace in a professional environment. This might mean that there is scope for other methods such as the use of a stereo camera or Kinect to separate the lifter from their surroundings and to track the technique in a three-dimensional way. 
 
-\subsubsection{Social Network}
+\subsection{Social Network}
 
 Perhaps another future enhancement to this application would be to build a social network around it. This could allow users to share scores and compete with one another, encouraging them to work on their squat form and to keep training at the gym.
 
@@ -102,7 +102,7 @@ This idea could be taken even further, with the possibility of sharing videos of
 
 This would enrich the overall user experience of the application and provide users with even better feedback.
 
-\subsection{Launch}
+\section{Launch}
 
 In the not too distant future, the aim is to launch the application to the general public, placing it on the Google Play\cite{googleplay} store. The application is in a good state to release immediately, but some of the improvements mentioned in section~\ref{sec:improvements} may be added prior to launch.
 
@@ -122,11 +122,11 @@ There has been some online interest in the application since a video demonstrati
 
 From these comments and many more, it can be seen that this application will be very useful and I look forward to launching it and continuing to develop it in the future.
 
-\subsection{Other Applications}
+\section{Other Applications}
 
 The technology used in this project has applications outside of weight lifting, in both sports and other areas.
 
-\subsubsection{Sports}
+\subsection{Sports}
 
 Within sports there is a very wide scope for figure tracking and analysis.
 
@@ -134,7 +134,7 @@ One particular application might be for cyclists training on a rolling road. A p
 
 There is also scope for use in gymnastics, where weight distributions could be analysed to aid gymnasts in their technique, prompting them to lean more in a particular direction.
 
-\subsubsection{Other Fields}
+\subsection{Other Fields}
 
 Other uses for real-time body tracking might be in interaction with user interfaces and games. Kinect already shows the popularity of this kind of technology, but this is lacking in the mobile industry. This technology could be applied to interacting with the interface of a mobile phone via the use of gestures, or perhaps in a game to allow you to adjust the pose of a character by moving your own body.
 

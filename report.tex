@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{book}
 \input{misc/packages}
 \input{misc/settings}
 
@@ -16,9 +16,10 @@
 }
 
 \newenvironment{centersections}
-{\titleformat{\section}[block]{\Large\bfseries\filcenter}{}{1em}{}}
-{\titleformat{\section}[block]{\Large\bfseries}{}{1em}{}}
+{\titleformat{\chapter}[block]{\Large\bfseries\filcenter}{}{1em}{}}
+{\titleformat{\chapter}[block]{\Large\bfseries}{}{1em}{}}
 
+\raggedbottom
 
 \begin{document}
 \input{title/title.tex}

@@ -1,8 +1,8 @@
-\section{Evaluation}
+\chapter{Evaluation}
 
 In this section the application will be evaluated against its goal by both qualitative and quantitative means. The overarching goal of this project was to create a non-intrusive application that provides accurate real-time feedback on a lifter's squat form. The application is evaluated against this goal by examining each of the three key parts of the goal - its intrusiveness, speed, and accuracy.
 
-\subsection{Intrusiveness}
+\section{Intrusiveness}
 The first of the three evaluation criteria is the application's intrusiveness. 
 
 The application has no requirement for the user to wear any specialised equipment or markers in order to be tracked. The lifter simply follows their usual procedure in walking the weight out from the rack, squatting, then walking back to the rack to return the weight.
@@ -13,9 +13,9 @@ The verbal feedback given could be considered intrusive as people exercising nea
 
 In summary, the intrusiveness of the application is in the set-up procedure, but there is none during the lift itself. From this it is fair to say that the application is non-intrusive, as once set-up is complete the application requires minimum interaction. The user does not even need to watch the screen as they squat due to the feedback being given verbally.
 
-\subsection{Speed}
+\section{Speed}
 
-\subsubsection{Frame Rate}
+\subsection{Frame Rate}
 A quantitative measure of the real-time nature of the application is its frame rate. Due to the way in which the application is implemented, with a separate thread processing frames to that which displays them on the screen, there are two independent frame rates that we can measure.
 
 The first is that of the graphics thread, reading frames from the camera and displaying them on the screen. This frame rate remained level at a value of 15 frames per second, and provided a smooth video feed throughout the running of the application. This caps the maximum perceived frame rate to the user, as it is not possible to display frames at a faster rate.
@@ -26,13 +26,13 @@ During the initial detection stage of the algorithm, the frame rate varied betwe
 
 The frame rate during the tracking and analysis stage of the algorithm is the most important, as this is where the algorithm is most resource intensive. During tracking, the frame rate was observed to vary between 22 and 28 frames per second. This is considerably faster than the limit of 15 frames per second, and shows that the algorithm developed in this project to track and analyse squats is easily capable of running in real-time.
 
-\subsubsection{Feedback}
+\subsection{Feedback}
 The application provides verbal feedback after each squat has been completed. This can be considered real-time as the user does not need to wait until they have finished their set of squats to receive feedback. This means that the user can adjust their technique during their set of squats according to the feedback given, allowing them to learn to squat safely and effectively.
 
-\subsection{Accuracy}
+\section{Accuracy}
 Perhaps the most difficult requirement to measure is the accuracy of the application. Several approaches are taken in this section to attempt to evaluate the application's accuracy both qualitatively and quantitatively. Accuracy can be broken down into two categories - tracking accuracy and analysis accuracy.
 
-\subsubsection{Tracking}
+\subsection{Tracking}
 
 Much of the tracking accuracy is determined by the robustness of the background subtraction algorithm. The background subtraction algorithm is reasonably accurate, and in fixed lighting conditions performs very well, removing all of the surroundings and leaving the lifter's silhouette in place.
 
@@ -78,7 +78,7 @@ From the screenshots above, it can be seen that the application tracks reasonabl
 
 The combination of background subtraction, model and optimisation tracks the lifter well overall, and is robust to a reasonable level of movement in the surrounding area.
 
-\subsubsection{Analysis}
+\subsection{Analysis}
 \label{sec:analysis_eval}
 
 As the application analyses squat form using computer vision, it is difficult to evaluate it quantitatively. It is possible however to compare the scores given by the application with scores given by an expert observing the squat, to give a semi-quantitative measure of the application's performance.
@@ -109,16 +109,16 @@ On average, the expert awarded a score around 7.5\% higher than the application 
 
 From these results it can be seen that the application, although less generous, scores squats relative to one another in a similar manner to an expert. Thus it can be concluded that the application offers reasonably accurate analysis of squat form.
 
-\subsection{Resource Usage}
+\section{Resource Usage}
 
 Another way in which the application can be evaluated is by its use of resources. Resources on a mobile device include the CPU, battery and memory.
 
-\subsubsection{CPU and Battery Usage}
+\subsection{CPU and Battery Usage}
 In terms of CPU usage, this application is quite resource intensive. Processing video frames in real-time means that the CPU is used constantly while the application is running. This level of CPU usage can be expected by a user however, as it is widely understood that video processing (especially that which runs in real-time) requires a large proportion of CPU time.
 
 The amount of CPU usage has a knock-on effect on the power consumption. It was measured that running the tracking stage of the algorithm over a time period of 2 minutes and 56 seconds, the battery level of the Samsung Galaxy S4 was drained by 2\%. This is quite a high consumption rate, although not significantly higher than that of the Samsung Camera application, which drained 2\% of the battery over 4 minutes and 12 seconds. The application is unlikely to be used for long periods of time, and so consumption for this application is less of a concern than that of a background service for example. A lifter will on average perform squats for no longer than 30 minutes including rest periods, and so we can estimate that in the worst case the application will drain the battery of the mobile device by approximately 20\% over the course of the session.
 
-\subsubsection{Memory Usage}
+\subsection{Memory Usage}
 Memory usage was monitored during the running of the application using the Android command:
 
 \texttt{adb shell dumpsys meminfo <package\_name>}
@@ -148,7 +148,7 @@ As shown in figure~\ref{fig:memusage}, the application's memory usage is greater
 
 It can be concluded that although fairly resource intensive, the application does not use an impractical level of resources and is suitable for use.
 
-\subsection{User Testing Evaluation}
+\section{User Testing Evaluation}
 \label{sec:user_testing}
 In addition to the evaluation against the goal, the application was also evaluated by a set of three users. These users are gym-goers of differing experiences: Harry Stevenson has been lifting weights for around three months, Greg Pye has been training for a little over a year, and Tom Wilding has been lifting for around four years.
 
@@ -165,7 +165,7 @@ They were asked to answer the following questions with a score out of 10 and a f
 They were also asked to provide any additional feedback from their real-world use of the application.
 
 \pagebreak
-\subsubsection{Intuitiveness and Ease of Use}
+\subsection{Intuitiveness and Ease of Use}
 
 Harry Stevenson:
 \begin{quote}
@@ -182,7 +182,7 @@ Tom Wilding:
 \textbf{9/10} \emph{The app is very intuitive because of its simplistic UI and real-time voice feedback. It could highlight more the fact that the camera needs to be completely still and that there must be no one in view at the start.}
 \end{quote}
 
-\subsubsection{Accuracy in Tracking and Analysis}
+\subsection{Accuracy in Tracking and Analysis}
 
 Harry Stevenson:
 \begin{quote}
@@ -199,7 +199,7 @@ Tom Wilding:
 \textbf{10/10} \emph{The application was capable of tracking accurately and provided relevant tips on depth and form. The tracking is particularly impressive as it just uses the camera with no manual calibration or tracking points.}
 \end{quote}
 
-\subsubsection{Training Aid}
+\subsection{Training Aid}
 
 Harry Stevenson:
 \begin{quote}
@@ -216,7 +216,7 @@ Tom Wilding:
 \textbf{8/10} \emph{The application provides good real-time feedback and visualisation however it is difficult to see the screen whilst undertaking the exercise as the camera must be positioned adjacent to the user. For me, the application was mainly helpful as a guide, to check form and depth, however would be impractical to set up every time when training. I think it would be very useful for a beginner to learn independently how to improve technique.}
 \end{quote}
 
-\subsubsection{Additional Feedback}
+\subsection{Additional Feedback}
 
 Harry Stevenson:
 \begin{quote}
@@ -233,6 +233,6 @@ Tom Wilding:
 \emph{Although a third party screen recording application can be used to record the analysis, it would be good if the application recorded each set for later review. Perhaps a more detailed analysis could be provided or slow motion replays after the real-time analysis.}
 \end{quote}
 
-\subsubsection{Summary of User Evaluation}
+\subsection{Summary of User Evaluation}
 
 From the feedback received, the project can be evaluated as a success, meeting the goal of providing accurate real-time feedback on squat form to aid in training. Whilst not always practical for everyday use at the gym due to the overhead of finding a position to rest the mobile device, it was deemed a very useful tool for beginners to learn correct squat technique without an expert guiding them.

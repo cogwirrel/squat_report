@@ -1,8 +1,8 @@
-\subsection{Optimisation}
+\section{Optimisation}
 
 In order to track and analyse squats in real-time, the code needed to be optimised. This was particularly important after the port to Android, where the limited hardware of a mobile device made inefficiencies more apparent.
 
-\subsubsection{Memory Management}
+\subsection{Memory Management}
 
 OpenCV provide a short set of guidelines for best practices in using their libraries on Android\cite{opencvoptim}. The main practices encouraged are to avoid repetitive Java Native Interface (JNI) calls into C++ code, and to avoid excessive memory allocations by initialising matrices towards the start of the application, reusing them rather than reallocating them upon every use.
 
@@ -12,7 +12,7 @@ The \texttt{MatManager} made it very simple to modify the code to reuse matrices
 
 The use of \texttt{MatManager} dramatically increased the speed of the application on Android, allowing tracking and analysis to occur in real-time. It avoids the allocation of more memory than the application needs, and the overhead of garbage collection to clear the memory space of dereferenced matrices. Each allocation of a matrix also requires a JNI call, and so these were also minimised.
 
-\subsubsection{Model Fitting}
+\subsection{Model Fitting}
 
 A small but powerful tool in improving the performance of the application was the maximum number of iterations that the BOBYQA optimiser was permitted to perform. When unbounded around fifty iterations were completed before the best fit was found for every frame. Some frames required a much larger number of iterations, in some cases an order of magnitude larger than the norm. This would cause the application to freeze temporarily, as this CPU intensive process was performed for many iterations. To avoid this it was required to cap the number of iterations to a sensible value.
 
@@ -20,7 +20,7 @@ Capping the number of iterations at too high a value would mean that in the wors
 
 A good value which met this trade-off was twenty iterations. This gave a good enough fit and a fast frame rate. The faster frame rate also meant that the fitting could run on more frames, giving a better overall fit over time.
 
-\subsubsection{Point Cache}
+\subsection{Point Cache}
 
 In order to draw the model, the start and end points of each ellipse must be calculated based on the coordinates of the toe and the angle of each joint. This is performed using simple trigonometry, taking the angle and length of each component to generate each point.
 
