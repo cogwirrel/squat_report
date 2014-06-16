@@ -1,7 +1,7 @@
-\subsection{Overview}
+\subsection{Algorithm Overview}
 \label{sec:algorithm_overview}
 
-In this section I will detail the way in which each of the components in both detection and tracking are combined to form the overall algorithm.
+In this section the way in which each of the components in both detection and tracking are combined to form the overall algorithm is detailed.
 
 The algorithm starts by detecting the lifter. Once the lifter has been detected in position and ready to squat, we begin the tracking phase. For every frame received from the camera, the lifter's silhouette is obtained though background subtraction, the model is mapped to this frame via the optimisation algorithm, and the model is analysed in order to evaluate the movement. This is repeated for every frame, using the analysis component to differentiate between repetitions and to score each squat.
 
