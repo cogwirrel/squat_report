@@ -15,18 +15,25 @@
   stringstyle=\color{red},
 }
 
+\newenvironment{centersections}
+{\titleformat{\section}[block]{\Large\bfseries\filcenter}{}{1em}{}}
+{\titleformat{\section}[block]{\Large\bfseries}{}{1em}{}}
+
+
 \begin{document}
 \input{title/title.tex}
 \pagebreak
 
 \large
+
+\begin{centersections}
 \input{abstract/abstract.tex}
 \pagebreak
 \input{acknowledgements/acknowledgements.tex}
+\end{centersections}
 
 \pagebreak
 \tableofcontents
-\listoffigures
 
 \pagebreak
 \input{intro/intro.tex}
