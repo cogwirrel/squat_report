@@ -9,7 +9,7 @@ The steps that a user of the application will follow are detailed in this sectio
 \label{fig:ensuresurroundings}
 \end{figure}
 
-The user begins by starting up the application. They will immediately see a video feed of the front-facing camera of their Android mobile device. They will see a message at the top of the screen, instructing them in the first step they must take: `Ensure surroundings are still.
+The user begins by starting up the application. They will immediately see a video feed of the front-facing camera of their Android mobile device. They will see a message at the top of the screen, instructing them in the first step they must take: `Ensure surroundings are still.'. The user can achieve this by placing their device in a stationary location and waiting for the application's view to clear.
 
 A button at the bottom of the screen displays the text `Wait...', indicating that some action must be performed before the button can be pressed. Figure~\ref{fig:ensuresurroundings} shows this screen.
 
@@ -55,7 +55,7 @@ Once the user has moved into position, and stood still following the instruction
 \label{fig:midsquat}
 \end{figure}
 
-As the model is displayed and the application beeps, the application's voice will indicate the next move expected from the user by saying `Start squatting when ready'. The user may now begin squatting in their own time. As they squat, the skeleton on screen will be updated in real-time as the tracking part of the algorithm runs, as shown in figure~\ref{fig:midsquat}.
+As the model is displayed and the application beeps, the application's voice will indicate the next move expected from the user by saying `Start squatting when ready'. The user may now begin squatting in their own time. As they squat, the position of the skeleton on screen will be updated in real-time, as shown in figure~\ref{fig:midsquat}.
 
 \begin{figure}[H]
     \centering
@@ -64,7 +64,7 @@ As the model is displayed and the application beeps, the application's voice wil
 \label{fig:belowparallel}
 \end{figure}
 
-As the user descends low enough for the squat to be considered valid, the application emits another beep. This real-time feedback is incredibly useful, meaning that the user will know when they have squatted low enough during the movement, rather than only discovering this after they have finished their set. When hearing a beep, the user knows immediately that they must start the ascension part of the movement and can begin to drive with their legs. On-screen, the skeleton changes colour to green (as shown in figure~\ref{fig:belowparallel}), reinforcing the notion that their squat is low enough to be considered valid.
+As the user descends low enough for the squat to be considered valid, the application emits another beep. This real-time feedback is incredibly useful, meaning that the user will know when they have squatted low enough during the movement, rather than only discovering this after they have finished their set. When hearing a beep, the user knows immediately that they must start the ascent and can begin to drive with their legs. On-screen, the skeleton changes colour to green (as shown in figure~\ref{fig:belowparallel}), reinforcing the notion that their squat is low enough to be considered valid.
 
 \begin{figure}[H]
     \centering
@@ -82,13 +82,13 @@ Another element of visual feedback is a line which shows the weight distribution
 \label{fig:lockout}
 \end{figure}
 
-As the user completes the ascension part of the squat (thus completing one full repetition) and `locks out', the skeleton is again coloured green as shown in figure~\ref{fig:lockout}. At this point, the application detects that a repetition has been completed, and provides the user with vocal feedback. This vocal feedback includes the current rep number, how successful the squat was, and a tip on how to improve the squat if necessary. An example might be `Two. Good. Try leaning forward a little more.', or `Four. Ok. Try squatting deeper.'.
+As the user completes the ascent (thus completing one full repetition) and `locks out', the skeleton is again coloured green as shown in figure~\ref{fig:lockout}. At this point, the application detects that a repetition has been completed, and provides the user with vocal feedback. This vocal feedback includes the current rep number, how successful the squat was, and a tip on how to improve the squat if necessary. An example might be `Two. Good. Try leaning forward a little more.', or `Four. Ok. Try squatting deeper.'.
 
 So as not to bore the user with the same repetitive messages, slight variations of each tip are chosen at random, depending on the main problem with the squat. For example if the user fails to squat deep enough, they may be told to `Squat deeper.' or `Try to squat below parallel' or one of many other variations.
 
-The part of the feedback which tells the user how well their squat was performed overall can be one of the following: `Not very good.', `Ok.', `Good.', `Very good.', `Excellent', `Perfect'. These are selected based on the score for the rep that they have just completed. For example, `Very good.' is said should the user achieve a score between 70\% and 90\%. When a user achieves a score above 90\%, the verbal feedback will not provide the user with a tip. This gives the user a more satisfying experience, encouraging the user to strive towards good squatting technique.
-
 The full range of vocal feedback is detailed in the appendix (section~\ref{sec:appendix_feedback}).
+
+The part of the feedback which tells the user how well their squat was performed overall can be one of the following: `Not very good.', `Ok.', `Good.', `Very good.', `Excellent', `Perfect'. These are selected based on the score for the rep that they have just completed. For example, `Very good.' is said should the user achieve a score between 70\% and 90\%. When a user achieves a score above 90\%, the verbal feedback will not provide the user with a tip. This gives the user a more satisfying experience, encouraging the user to strive towards good squatting technique.
 
 \begin{figure}[H]
     \centering
@@ -103,6 +103,6 @@ When the user has completed their desired number of squats, they simply walk out
 
 
 
-Here, the user can see their score for each repetition they completed, and also the main `problem' with their squat. Each entry in the table is coloured in relation to its score, giving the user an instant visual indication as to how well their squat was performed, without the need to read each score value. A set of scores that is mostly green will indicate to the user that they performed a good set of squats, and a largely orange or red set of scores will inform the user that they should improve their technique.
+Here, the user can see their score for each repetition they completed, and also the main `problem' with their squat. Each entry in the table is coloured in relation to its score, giving the user an instant visual indication as to how well their set of squats was performed, without the need to read each score value. A set of scores that is mostly green will indicate to the user that they performed a good set of squats, and a largely orange or red set of scores will inform the user that they should improve their technique.
 
-Once the user has reviewed their scores, they can press the reset button. This will change the application to its initial state, allowing the user to press the start button once their surroundings are still.
+Once the user has reviewed their scores, they can press the reset button. This will change the application to its initial state, allowing the user to press the start button once their surroundings are still to begin their next set.

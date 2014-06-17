@@ -3,7 +3,7 @@
 
 \subsection{Analysis and Scoring}
 
-Events and listeners are utilised throughout the codebase, but their most interesting use is in the analysis stage.
+The observer design pattern is utilised throughout the codebase, but its most interesting use is in the analysis stage.
 
 Upon each iteration of the tracking algorithm, the model's joint positions and angles are examined. This per-frame examination is performed by the \texttt{ModelEventManager}. Other classes may register listener functions with the \texttt{ModelEventManager}, detailing which event it wishes to subscribe to. When a new observation is made on the model (for example we have newly observed that the lifter has gone `below parallel'), an event is triggered, calling every registered listener for that particular event.
 
@@ -18,9 +18,9 @@ There are many events that can be subscribed to, and some of the most interestin
 	\item \texttt{SQUAT\_BELOW\_PARALLEL\_END} Triggered as soon as the lifter travels upwards out of the below parallel state.
 \end{itemize}
 
-There are many other events (listed in the appendix) that are triggered when the lifter first enters and exits a position of bad form.
+There are many other events (listed in the appendix in section~\ref{sec:appendix_events}) that are triggered when the lifter first enters and exits a position of bad form.
 
-This event and listener based design pattern allows a high level way to track the lifter's position. For example one could write a simple class to count the number of repetitions a lifter performs, with no need to worry about checking each frame. This example might look as follows:
+This design pattern allows a high level way to track the lifter's position. For example one could write a simple class to count the number of repetitions a lifter performs, with no need to worry about checking each frame. This example might look as follows:
 
 \begin{lstlisting}[style=javastyle]
 
@@ -42,6 +42,7 @@ public class SimpleRepCounter {
 }
 
 \end{lstlisting}
+
 
 The more advanced components used in the analysis and scoring of each repetition use sets of listeners in a similar manner.
 

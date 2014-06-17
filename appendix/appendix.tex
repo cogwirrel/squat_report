@@ -1,5 +1,31 @@
 \chapter{Appendix}
 
+\section{Squat Analysis Events}
+\label{sec:appendix_events}
+
+The events offered by the \texttt{ModelEventManager} to which an object may subscribe are listed below:
+
+\begin{itemize}
+	\item \texttt{SQUAT\_BELOW\_PARALLEL\_START} triggered when the lifter's hip passes their knee while descending
+	\item \texttt{SQUAT\_BELOW\_PARALLEL\_END} triggered when the lifter's hip passes their knee while ascending
+	\item \texttt{SQUAT\_LOCKOUT\_START} triggered when the lifter enters the upright position
+	\item \texttt{SQUAT\_LOCKOUT\_END} triggered when the lifter exists the upright position
+	\item \texttt{SQUAT\_KNEE\_FORWARD\_START} triggered when the lifter's knees come too far forward
+	\item \texttt{SQUAT\_KNEE\_FORWARD\_END} triggered when the lifter's knees return from a position of being too far forward
+	\item \texttt{SQUAT\_KNEE\_BACKWARD\_START} triggered when the lifter's knees come too far backward
+	\item \texttt{SQUAT\_KNEE\_BACKWARD\_END} triggered when the lifter's knees return from a position of being too far backward
+	\item \texttt{SQUAT\_BAD\_WEIGHT\_DISTRIBUTION\_START} triggered when the weight ceases to vertically align with the lifter's foot
+	\item \texttt{SQUAT\_BAD\_WEIGHT\_DISTRIBUTION\_END} triggered when the weight returns to a position vertically in line with the lifter's foot
+	\item \texttt{SQUAT\_ON\_HEEL\_OR\_TOE\_START} triggered when the lifter's heel or toe leaves the ground
+	\item \texttt{SQUAT\_ON\_HEEL\_OR\_TOE\_END} triggered when the lifter's heel or toe returns to the ground
+	\item \texttt{SQUAT\_BAD\_FORM} triggered on every frame in which the lifter is in a position of bad form
+	\item \texttt{SQUAT\_DESCEND\_START} triggered when the lifter is first detected to be descending
+	\item \texttt{SQUAT\_ASCEND\_START} triggered when the lifter is first detected to be ascending
+	\item \texttt{SQUAT\_BAD\_BACK\_ANGLE\_START} triggered when the lifter starts to lean too far forward
+	\item \texttt{SQUAT\_BAD\_BACK\_ANGLE\_END} triggered when the lifter ceases to lean too far forward
+\end{itemize}
+
+
 \section{Verbal Feedback}
 \label{sec:appendix_feedback}
 

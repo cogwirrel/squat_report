@@ -3,8 +3,8 @@
 
 In this section the way in which each of the components in both detection and tracking are combined to form the overall algorithm is detailed.
 
-The algorithm starts by detecting the lifter. Once the lifter has been detected in position and ready to squat, we begin the tracking phase. For every frame received from the camera, the lifter's silhouette is obtained though background subtraction, the model is mapped to this frame via the optimisation algorithm, and the model is analysed in order to evaluate the movement. This is repeated for every frame, using the analysis component to differentiate between repetitions and to score each squat.
+The algorithm starts by detecting the lifter. Once the lifter has been detected to be in position and ready to squat, the tracking phase begins. For every frame received from the camera, the lifter's silhouette is obtained though background subtraction, the model is mapped to the silhouette via the optimisation algorithm, and the model is analysed in order to evaluate the movement. This is repeated for every frame, using the analysis component to differentiate between repetitions and to score each squat.
 
-Upon each iteration, the termination condition is checked. This termination condition is triggered when an area of pixels around the lifter's foot has been empty of foreground for several iterations. This means that when the lifter begins to walk away, the termination condition is triggered and tracking ceases to continue.
+Upon each new frame, the termination condition is checked. This termination condition is activated when an area of pixels around the lifter's foot has been empty of foreground for several previous frames. This means that when the lifter begins to walk away, the termination condition is triggered and tracking ceases to continue.
 
 The overall experience for the user is intuitive and automatic, avoiding the lifter having to change their standard process of walking out from a rack with the weight, standing still ready to squat, performing squats, then walking back to the rack to put the weight away.

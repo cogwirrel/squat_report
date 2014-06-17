@@ -4,9 +4,9 @@ In order to track and analyse squats in real-time, the code needed to be optimis
 
 \subsection{Memory Management}
 
-OpenCV provide a short set of guidelines for best practices in using their libraries on Android\cite{opencvoptim}. The main practices encouraged are to avoid repetitive Java Native Interface (JNI) calls into C++ code, and to avoid excessive memory allocations by initialising matrices towards the start of the application, reusing them rather than reallocating them upon every use.
+The OpenCV website provides a short set of guidelines for best practices in using their libraries on Android\cite{opencvoptim}. The main practices encouraged are to avoid repetitive Java Native Interface (JNI) calls into C++ code, and to avoid excessive memory allocations by initialising matrices towards the start of the application, reusing them rather than reallocating them upon every use.
 
-Matrices in OpenCV are defined as \texttt{Mat} objects. In order to follow the best practices for allocating and using \texttt{Mat} objects, a \texttt{MatManager} class was created. The \texttt{MatManager} is a static class though which the codebase retrieves matrices. It has a single function, \texttt{get()} which returns a reference to a \texttt{Mat}. This \texttt{get()} function takes a string key as a parameter, and keeps track of a map of these keys to \texttt{Mat} objects. When requested for a matrix with a key that does not exist in the map, the matrix is created, and when the key does exist, the matrix that has previously been created is returned.
+Matrices in OpenCV are defined as \texttt{Mat} objects. In order to follow the best practices for allocating and using \texttt{Mat} objects, a class called \texttt{MatManager} was created. The \texttt{MatManager} is a static class though which the codebase retrieves matrices. It has a single function, \texttt{get()} which returns a reference to a \texttt{Mat}. This \texttt{get()} function takes a string key as a parameter, and keeps track of a map of these keys to \texttt{Mat} objects. When requested for a matrix with a key that does not exist in the map, the matrix is created, and when the key does exist, the matrix that has previously been created is returned.
 
 The \texttt{MatManager} made it very simple to modify the code to reuse matrices. Wherever the codebase had previously created a \texttt{Mat}, the construction was replaced with \texttt{MatManager.get()} and an appropriate key.
 
@@ -14,16 +14,16 @@ The use of \texttt{MatManager} dramatically increased the speed of the applicati
 
 \subsection{Model Fitting}
 
-A small but powerful tool in improving the performance of the application was the maximum number of iterations that the BOBYQA optimiser was permitted to perform. When unbounded around fifty iterations were completed before the best fit was found for every frame. Some frames required a much larger number of iterations, in some cases an order of magnitude larger than the norm. This would cause the application to freeze temporarily, as this CPU intensive process was performed for many iterations. To avoid this it was required to cap the number of iterations to a sensible value.
+A small but powerful factor in improving the performance of the application was the maximum number of iterations that the BOBYQA optimiser was permitted to perform. When unbounded around fifty iterations were completed before the best fit was found for every frame. Some frames required a far higher number of iterations, in some cases an order of magnitude larger than the norm. This would cause the application to freeze temporarily, as this CPU intensive process was performed for many iterations. To avoid this it was required to cap the number of iterations to a sensible value.
 
 Capping the number of iterations at too high a value would mean that in the worst case the frame rate would be slow, giving the user a poor experience. Too low a value would mean that the fit per frame would not be accurate enough, causing the model to poorly follow the figure and give bad analysis results.
 
-A good value which met this trade-off was twenty iterations. This gave a good enough fit and a fast frame rate. The faster frame rate also meant that the fitting could run on more frames, giving a better overall fit over time.
+A good value which met this trade-off was twenty iterations. This gave a precise  enough fit and a fast frame rate. The faster frame rate also meant that the fitting could run on more frames, giving a better overall fit over time.
 
 \subsection{Point Cache}
 
 In order to draw the model, the start and end points of each ellipse must be calculated based on the coordinates of the toe and the angle of each joint. This is performed using simple trigonometry, taking the angle and length of each component to generate each point.
 
-These points are queried several times per model state in order to check the form of the squat. To avoid recalculating the points upon every query, we store the points in a cache. When the points are first calculated, they are stored in the cache. Every time thereafter the points are retrieved directly from the cache, until the model's angles are adjusted by the optimiser.
+These points are queried several times per model state in order to check the form of the squat. To avoid recalculating the points upon every query, the points are stored in an array when first calculated. Every time thereafter the points are retrieved directly from this array, until the model's angles are adjusted by the optimiser and the array is cleared.
 
 This provided a reasonable speed-up due to the high frequency of calls to the point calculation function.
