@@ -36,7 +36,7 @@ Perhaps the most difficult requirement to measure is the accuracy of the applica
 
 Much of the tracking accuracy is determined by the robustness of the background subtraction algorithm. The background subtraction algorithm is reasonably accurate, and in fixed lighting conditions performs very well, removing all of the surroundings and leaving the lifter's silhouette in place.
 
-The algorithm taking the largest object in the foreground means that background movement that is isolated from the lifter does not have an effect on the subtraction. This can be seen in figure~\ref{fig:goodbackground}, as a man enters the view and the application continues to track as normal.
+The algorithm taking the largest object in the foreground means that background movement that is isolated from the lifter does not have an effect on the subtraction. This can be seen in figure~\ref{fig:goodbackground}, as a man enters the view from the right and the application continues to track as normal.
 
 \begin{figure}[H]
     \centering
@@ -72,9 +72,9 @@ Any movement in the background or foreground that crosses the lifter will effect
 
 As the passer-by walks into view, he is detected as foreground, and as soon as he crosses the lifter, becomes part of the largest object, pulling the model towards him. The model follows the passer by until he leaves the view, but after this the model is reasonably quick to snap back into place and continue tracking the lifter as usual.
 
-In unstable lighting conditions, the background subtraction algorithm is prone to failure. When the lighting changes, the colour of pixels in the background will change and (as soon as the difference is greater than the threshold) will be detected as foreground. This then breaks down the tracking - wherever the model resides it achieves maximum overlap with the foreground, and so ceases to move. Perhaps the background subtraction algorithm could be improved to update its known background over time, allowing for variations in lighting.
+In unstable lighting conditions, the background subtraction algorithm is prone to failure. When the lighting changes, the colour of pixels in the background will change and (as soon as the difference is greater than the threshold) will be detected as foreground. This then breaks down the tracking - wherever the model resides it achieves maximum overlap with the foreground, and so ceases to move. Perhaps the background subtraction algorithm could be improved to update its known background over time, allowing for variations in lighting. This is discussed further in section~\ref{sec:future_bgsub}.
 
-From the screenshots above, it can be seen that the application tracks reasonably well on the whole. The joint locations of the model do not always perfectly match the lifter, but the model follows the lifter with reasonable precision. The proportions of the model are fixed in the current implementation, which is likely the cause of the intermittent joint misalignment.
+From the screenshots above, it can be seen that the application tracks reasonably well on the whole. The joint locations of the model do not always perfectly match the lifter, but the model follows the lifter with reasonable precision. The proportions of the model are fixed in the current implementation, which is likely the cause of any intermittent joint misalignment.
 
 The combination of background subtraction, model and optimisation tracks the lifter well overall, and is robust to a reasonable level of movement in the surrounding area.
 
@@ -83,7 +83,7 @@ The combination of background subtraction, model and optimisation tracks the lif
 
 As the application analyses squat form using computer vision, it is difficult to evaluate it quantitatively. It is possible however to compare the scores given by the application with scores given by an expert observing the squat, to give a semi-quantitative measure of the application's performance.
 
-In this experiment, 84 squats were performed, observed both by the application and an expert. Figure~\ref{fig:scorediff} shows a radar chart with the expert awarded score in blue, and the application awarded score in red:
+In an experiment, 84 squats were performed, observed both by the application and an expert. Figure~\ref{fig:scorediff} shows a radar chart with the expert awarded scores in blue, and the application awarded scores in red:
 
 \begin{figure}[H]
     \centering
@@ -92,7 +92,7 @@ In this experiment, 84 squats were performed, observed both by the application a
 \label{fig:scorediff}
 \end{figure}
 
-Of the 84 squats scored, 17 did not track accurately throughout the lift. Removing these repetitions gives the following results in figure~\ref{fig:scorediffgood}.
+Of the 84 squats scored, 17 did not track accurately throughout the lift (likely due to changes in lighting conditions). Removing these repetitions gives the following results in figure~\ref{fig:scorediffgood}.
 
 \begin{figure}[H]
     \centering
@@ -116,7 +116,7 @@ Another way in which the application can be evaluated is by its use of resources
 \subsection{CPU and Battery Usage}
 In terms of CPU usage, this application is quite resource intensive. Processing video frames in real-time means that the CPU is used constantly while the application is running. This level of CPU usage can be expected by a user however, as it is widely understood that video processing (especially that which runs in real-time) requires a large proportion of CPU time.
 
-The amount of CPU usage has a knock-on effect on the power consumption. It was measured that running the tracking stage of the algorithm over a time period of 2 minutes and 56 seconds, the battery level of the Samsung Galaxy S4 was drained by 2\%. This is quite a high consumption rate, although not significantly higher than that of the Samsung Camera application, which drained 2\% of the battery over 4 minutes and 12 seconds. The application is unlikely to be used for long periods of time, and so consumption for this application is less of a concern than that of a background service for example. A lifter will on average perform squats for no longer than 30 minutes including rest periods, and so we can estimate that in the worst case the application will drain the battery of the mobile device by approximately 20\% over the course of the session.
+The amount of CPU usage has a knock-on effect on the power consumption. It was measured that running the tracking stage of the algorithm over a time period of 2 minutes and 56 seconds, the battery level of the Samsung Galaxy S4 was drained by 2\%. This is quite a high consumption rate, although not significantly higher than that of the Samsung Camera application, which drained 2\% of the battery over 4 minutes and 12 seconds. The application is unlikely to be used for long periods of time, and so consumption for this application is less of a concern than it would be for a background service for example. A lifter will on average perform squats for no longer than 30 minutes including rest periods, and so we can estimate that the application will drain the battery of the mobile device by approximately 20\% over the course of a particularly long session, which is not unreasonable.
 
 \subsection{Memory Usage}
 Memory usage was monitored during the running of the application using the Android command:
@@ -146,7 +146,7 @@ We can compare this memory usage to other Android applications. The following ta
 
 As shown in figure~\ref{fig:memusage}, the application's memory usage is greater than most common applications, however it is not outrageously high, being less than that of Facebook - a very widely used application.
 
-It can be concluded that although fairly resource intensive, the application does not use an impractical level of resources and is suitable for use.
+It can be concluded that although fairly resource intensive, the application does not use an impractical level of resources and is therefore suitable for use in this regard.
 
 \section{User Testing Evaluation}
 \label{sec:user_testing}
@@ -164,7 +164,7 @@ They were asked to answer the following questions with a score out of 10 and a f
 
 They were also asked to provide any additional feedback from their real-world use of the application.
 
-
+\pagebreak
 \subsection{Intuitiveness and Ease of Use}
 
 Harry Stevenson:
